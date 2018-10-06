@@ -3,7 +3,12 @@ guid: 7242c80c767334667bb3bc6a3186a64b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - roomMap: {instanceID: 0}
+  - roomObject: {fileID: 1414011184388786, guid: 5e0609e2918b949cca192750b0cc60e1,
+      type: 2}
+  - doorObject: {fileID: 1082954482424630, guid: 18213f57be6be44f882fbcbb9f5f84b2,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

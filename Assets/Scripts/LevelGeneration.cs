@@ -144,9 +144,11 @@ void CreateRooms(){
 		int index = Mathf.RoundToInt(Random.value * (takenPositions.Count - 1)); 
 		rooms[(int)takenPositions[index].x+width,(int)takenPositions[index].y+height].type = 0; 
 		int index2;
+		int inc = 0;
 		do {
 			index2 = Mathf.RoundToInt(Random.value * (takenPositions.Count - 1)); 
-		} while ( index2 == index );
+			inc++;
+		} while ( index2 == index && NumberOfNeighbors(takenPositions[index2]) > 1 && inc < 100);
 		rooms[(int)takenPositions[index2].x+width,(int)takenPositions[index2].y+height].type = 2; 
 	}
 
@@ -154,28 +156,24 @@ void CreateRooms(){
 		Vector2 position;
 		Vector3 drawPos;
 		GameObject roomCreated;
-		GameObject doorCreated;
 		for (int i = 0; i<numberOfRooms;i++){	
 			Room roomToCreate = rooms[(int)takenPositions[i].x+width,(int)takenPositions[i].y+height];
 			position = roomToCreate.gridPos;
 			drawPos = new Vector3(position.x*19,0f,position.y*11);
 			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity);
 			roomCreated.transform.parent = roomMap.transform;
+			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene();
 			if(roomToCreate.doorTop){
-				doorCreated = Instantiate(doorObject, drawPos+Vector3.forward * 5, Quaternion.identity);
-				doorCreated.transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.forward * 5, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 			if(roomToCreate.doorRight){
-				doorCreated = Instantiate(doorObject, drawPos+Vector3.right * 9, Quaternion.identity);
-				doorCreated.transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.right * 9, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 			if(roomToCreate.doorBot){
-				doorCreated = Instantiate(doorObject, drawPos+Vector3.back * 5, Quaternion.identity);
-				doorCreated.transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.back * 5, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 			if(roomToCreate.doorLeft){
-				doorCreated = Instantiate(doorObject, drawPos+Vector3.left * 9, Quaternion.identity);
-				doorCreated.transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.left * 9, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 		}
 	}

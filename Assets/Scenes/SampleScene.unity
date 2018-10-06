@@ -358,7 +358,7 @@ MonoBehaviour:
   height: 4
   numberOfRooms: 10
   roomMap: {fileID: 2066940857}
-  roomObject: {fileID: 1213496088826608, guid: 5e0609e2918b949cca192750b0cc60e1, type: 2}
+  roomObject: {fileID: 1414011184388786, guid: 5e0609e2918b949cca192750b0cc60e1, type: 2}
   doorObject: {fileID: 1082954482424630, guid: 18213f57be6be44f882fbcbb9f5f84b2, type: 2}
 --- !u!1 &2066940857
 GameObject:
@@ -382,7 +382,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2066940857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
