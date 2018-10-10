@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour {
 
+	public class Room {
+		public Vector2 gridPos;
+		public int type;
+		public bool doorTop, doorBot, doorLeft, doorRight;
+
+		public Room(Vector2 _gridPos, int _type){
+			gridPos = _gridPos;
+			type = _type;
+		}
+	}
+
 	private Room[,] rooms;
 	List<Vector2> takenPositions = new List<Vector2>();
 	public int width, height, numberOfRooms;
-	public GameObject roomMap;
 	public GameObject roomObject;
 	public GameObject doorObject;
 	// Use this for initialization
@@ -161,7 +171,7 @@ void CreateRooms(){
 			position = roomToCreate.gridPos;
 			drawPos = new Vector3(position.x*19,0f,position.y*11);
 			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity);
-			roomCreated.transform.parent = roomMap.transform;
+			roomCreated.transform.parent = transform;
 			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene();
 			if(roomToCreate.doorTop){
 				Instantiate(doorObject, drawPos+Vector3.forward * 5, Quaternion.identity).transform.parent = roomCreated.transform;
