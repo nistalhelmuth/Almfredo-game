@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 7242c80c767334667bb3bc6a3186a64b
+guid: 893177c5913054da0b3dd2a886aa0c3d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
   - roomMap: {instanceID: 0}
-  - roomObject: {fileID: 1414011184388786, guid: 5e0609e2918b949cca192750b0cc60e1,
+  - roomObject: {fileID: 1993723111717430, guid: 8d4fd353d95bd49d2abc525061289a0e,
       type: 2}
   - doorObject: {fileID: 1082954482424630, guid: 18213f57be6be44f882fbcbb9f5f84b2,
       type: 2}

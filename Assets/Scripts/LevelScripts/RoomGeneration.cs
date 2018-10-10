@@ -9,8 +9,8 @@ public class RoomGeneration : MonoBehaviour {
 		public GameObject toCreate;
 		private List <Vector3> gridPositions = new List <Vector3> ();	
 
-		public int columns = 8; 										//Number of columns in our game board.
-		public int rows = 4;					
+		public int columns = 16; 										//Number of columns in our game board.
+		public int rows = 8;					
 
 		void InitialiseList ()
 		{
@@ -18,10 +18,10 @@ public class RoomGeneration : MonoBehaviour {
 			gridPositions.Clear ();
 			
 			//Loop through x axis (columns).
-			for(int x = 0; x < columns; x++)
+			for(int x = 0; x < columns-1; x++)
 			{
 				//Within each column, loop through y axis (rows).
-				for(int z = 0; z < rows; z++)
+				for(int z = 0; z < rows-1; z++)
 				{
 					//At each index add a new Vector3 to our list with the x and y coordinates of that position.
 					gridPositions.Add (new Vector3(x, 0f,z));
@@ -35,7 +35,7 @@ public class RoomGeneration : MonoBehaviour {
 			int randomIndex = Random.Range (0, gridPositions.Count);
 			
 			//Declare a variable of type Vector3 called randomPosition, set it's value to the entry at randomIndex from our List gridPositions.
-			Vector3 randomPosition = gridPositions[randomIndex]+transform.position + new Vector3(-8f,0f,-4f);
+			Vector3 randomPosition = gridPositions[randomIndex]+ transform.position  + new Vector3(-7f,0f,-3f);;
 			
 			//Remove the entry at randomIndex from the list so that it can't be re-used.
 			gridPositions.RemoveAt (randomIndex);
