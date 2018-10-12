@@ -8,27 +8,42 @@ ModelImporter:
     100004: Body.001
     100006: Eyes
     100008: Mouth
+    100010: EyesRef
+    100012: MouthRef
+    100014: Sphere.001
     400000: //RootNode
     400002: Body
     400004: Body.001
     400006: Eyes
     400008: Mouth
+    400010: EyesRef
+    400012: MouthRef
+    400014: Sphere.001
     2100000: No Name
     2300000: //RootNode
     2300002: Body
     2300004: Body.001
     2300006: Eyes
     2300008: Mouth
+    2300010: EyesRef
+    2300012: MouthRef
+    2300014: Sphere.001
     3300000: //RootNode
     3300002: Body
     3300004: Body.001
     3300006: Eyes
     3300008: Mouth
+    3300010: EyesRef
+    3300012: MouthRef
+    3300014: Sphere.001
     4300000: Sphere
     4300002: Body.001
     4300004: Body
     4300006: Mouth
     4300008: Eyes
+    4300010: MouthRef
+    4300012: Sphere.001
+    4300014: EyesRef
   externalObjects: {}
   materials:
     importMaterials: 0
