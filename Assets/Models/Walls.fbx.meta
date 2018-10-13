@@ -1,58 +1,46 @@
 fileFormatVersion: 2
-guid: 90ebd3adbdf054ab581cb678ae9a6684
+guid: cdd4e59a746d54c9eb5909aee3b7d4db
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Body
-    100004: Body.001
-    100006: Eyes
-    100008: Mouth
-    100010: EyesRef
-    100012: MouthRef
-    100014: Sphere.001
-    100016: Armature
-    100018: Bone
-    100020: Bone_end
-    400000: //RootNode
-    400002: Body
-    400004: Body.001
-    400006: Eyes
-    400008: Mouth
-    400010: EyesRef
-    400012: MouthRef
-    400014: Sphere.001
-    400016: Armature
-    400018: Bone
-    400020: Bone_end
+    100000: Plane
+    100002: //RootNode
+    100004: Walls
+    100006: Cube
+    100008: Cube.001
+    100010: Cube.002
+    100012: Cube.003
+    400000: Plane
+    400002: //RootNode
+    400004: Walls
+    400006: Cube
+    400008: Cube.001
+    400010: Cube.002
+    400012: Cube.003
     2100000: No Name
-    2300000: //RootNode
-    2300002: Body
-    2300004: Body.001
-    2300006: Eyes
-    2300008: Mouth
-    2300010: EyesRef
-    2300012: MouthRef
-    2300014: Sphere.001
-    3300000: //RootNode
-    3300002: Body
-    3300004: Body.001
-    3300006: Eyes
-    3300008: Mouth
-    3300010: EyesRef
-    3300012: MouthRef
-    3300014: Sphere.001
-    4300000: Sphere
-    4300002: Body.001
-    4300004: Body
-    4300006: Mouth
-    4300008: Eyes
-    4300010: MouthRef
-    4300012: Sphere.001
-    4300014: EyesRef
+    2300000: Plane
+    2300002: Walls
+    2300004: //RootNode
+    2300006: Cube
+    2300008: Cube.001
+    2300010: Cube.002
+    2300012: Cube.003
+    3300000: Plane
+    3300002: Walls
+    3300004: //RootNode
+    3300006: Cube
+    3300008: Cube.001
+    3300010: Cube.002
+    3300012: Cube.003
+    4300000: Plane
+    4300002: Walls
+    4300004: Cube.003
+    4300006: Cube.002
+    4300008: Cube.001
+    4300010: Cube
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -89,7 +77,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
