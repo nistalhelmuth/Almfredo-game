@@ -1,33 +1,31 @@
 fileFormatVersion: 2
-guid: e44eb8f4dd87342f9aebb858462e3103
+guid: aef5b925f19ac49668605fb156747a69
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Cylinder
-    100002: Cylinder_011
-    100004: Cylinder_012
+    100002: Cylinder.011
+    100004: Cylinder.012
     100006: //RootNode
     100008: Torus
     400000: Cylinder
-    400002: Cylinder_011
-    400004: Cylinder_012
+    400002: Cylinder.011
+    400004: Cylinder.012
     400006: //RootNode
     400008: Torus
-    2100000: unnamed
+    2100000: No Name
     2300000: Cylinder
-    2300002: Cylinder_011
-    2300004: Cylinder_012
+    2300002: Cylinder.011
+    2300004: Cylinder.012
     2300006: Torus
     3300000: Cylinder
-    3300002: Cylinder_011
-    3300004: Cylinder_012
+    3300002: Cylinder.011
+    3300004: Cylinder.012
     3300006: Torus
-    4300000: Cylinder_012
+    4300000: Cylinder.012
     4300002: Torus
-    4300004: Cylinder_011
+    4300004: Cylinder.011
     4300006: Cylinder
-    7400000: Default Take
-    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -81,7 +79,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -106,7 +104,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
