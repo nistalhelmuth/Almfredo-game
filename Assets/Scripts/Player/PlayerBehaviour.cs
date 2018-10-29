@@ -6,26 +6,44 @@ namespace Player
 {
     public class PlayerBehaviour : MonoBehaviour
     {
+
+        
         public PlayerState state
         {
             get;
             set;
         }
 
-        private List<PlayerState> stateBox;
+        public delegate void StateDelegate();
+        public StateDelegate actionHandler;
+
+        public string HorizontalAxis="Horizontal";
+        public string VerticalAxis="Vertical";
+
+        public Rigidbody body;
+        public Vector3 Mdirection;
+        public Transform playerTrans;
+        public float speed;
 
         void Start ()
         {
-            stateBox = new List<PlayerState>();
-
+            state = new IdleState(this);
+            body = GetComponent<Rigidbody>();
+            playerTrans= transform;
         }
 
         void Update ()
         {
-            foreach (PlayerState state in stateBox)
+            Mdirection = new Vector3(Input.GetAxis(HorizontalAxis), 0f, Input.GetAxis(VerticalAxis));
+            state = state.TheListener();
+        }
+
+        void FixedUpdate()
+        {
+            if (actionHandler != null)
             {
-                state.HandleInput();
-            }
+                actionHandler();
+            };
         }
     }
 }

@@ -169,21 +169,21 @@ void CreateRooms(){
 		for (int i = 0; i<numberOfRooms;i++){	
 			Room roomToCreate = rooms[(int)takenPositions[i].x+width,(int)takenPositions[i].y+height];
 			position = roomToCreate.gridPos;
-			drawPos = new Vector3(position.x*19,0f,position.y*11);
+			drawPos = new Vector3(position.x*21,0f,position.y*13);
 			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity);
 			roomCreated.transform.parent = transform;
 			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene();
 			if(roomToCreate.doorTop){
-				Instantiate(doorObject, drawPos+Vector3.forward * 5, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.forward * 6, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 			if(roomToCreate.doorRight){
-				Instantiate(doorObject, drawPos+Vector3.right * 9, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.right * 10, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 			if(roomToCreate.doorBot){
-				Instantiate(doorObject, drawPos+Vector3.back * 5, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.back * 6, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 			if(roomToCreate.doorLeft){
-				Instantiate(doorObject, drawPos+Vector3.left * 9, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject, drawPos+Vector3.left * 10, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
 		}
 	}

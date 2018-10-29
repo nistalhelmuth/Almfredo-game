@@ -5,8 +5,9 @@ using UnityEngine;
 public class RoomGeneration : MonoBehaviour {
 
 		public GameObject enemy;
-		public GameObject obstacle;
-		public GameObject toCreate;
+		public GameObject chair;
+		public GameObject shelf;
+		public GameObject table;
 		private List <Vector3> gridPositions = new List <Vector3> ();	
 
 		public int columns = 16; 										//Number of columns in our game board.
@@ -69,7 +70,10 @@ public class RoomGeneration : MonoBehaviour {
 			InitialiseList ();
 			
 			//Instantiate a random number of wall tiles based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (obstacle, 8, 15);
+			LayoutObjectAtRandom (table, 3, 6);
+			LayoutObjectAtRandom (chair, 1, 3);
+			LayoutObjectAtRandom (shelf, 4, 6);
+
 			
 			//Instantiate a random number of enemies based on minimum and maximum, at randomized positions.
 			LayoutObjectAtRandom (enemy, 2, 5);

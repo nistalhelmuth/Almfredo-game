@@ -5,12 +5,14 @@ namespace Player
 {
     public abstract class PlayerState
     {
-        public PlayerBehaviour Player;
-
-        public PlayerState(PlayerBehaviour player)
+        public PlayerBehaviour Player
         {
-            Player = player;
+            get;
+            set;
         }
-        public abstract void HandleInput();
+
+        public abstract PlayerState TheListener();
+
+        
     }
 }
