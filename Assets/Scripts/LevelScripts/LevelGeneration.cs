@@ -20,6 +20,8 @@ public class LevelGeneration : MonoBehaviour {
 	public int width, height, numberOfRooms;
 	public GameObject roomObject;
 	public GameObject doorObject;
+
+	public Transform camera;
 	// Use this for initialization
 	void Start () {
 		CreateRooms();
@@ -172,19 +174,21 @@ void CreateRooms(){
 			drawPos = new Vector3(position.x*21,0f,position.y*13);
 			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity);
 			roomCreated.transform.parent = transform;
-			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene(roomToCreate.type);
-			if(roomToCreate.doorTop){
+			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene(roomToCreate.type, camera);
+			
+			if(!roomToCreate.doorTop){
 				Instantiate(doorObject, drawPos+Vector3.forward * 6, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
-			if(roomToCreate.doorRight){
+			if(!roomToCreate.doorRight){
 				Instantiate(doorObject, drawPos+Vector3.right * 10, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
-			if(roomToCreate.doorBot){
+			if(!roomToCreate.doorBot){
 				Instantiate(doorObject, drawPos+Vector3.back * 6, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
-			if(roomToCreate.doorLeft){
+			if(!roomToCreate.doorLeft){
 				Instantiate(doorObject, drawPos+Vector3.left * 10, Quaternion.identity).transform.parent = roomCreated.transform;
 			}
+			 
 		}
 	}
 
