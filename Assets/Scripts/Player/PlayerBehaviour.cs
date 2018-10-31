@@ -28,6 +28,7 @@ namespace Player
         void Start ()
         {
             state = new IdleState(this);
+            //state = new BaseState(this);
             body = GetComponent<Rigidbody>();
             playerTrans= transform;
         }
@@ -45,5 +46,10 @@ namespace Player
                 actionHandler();
             };
         }
+
+        /* 
+        void collision{
+            new hurtState(Player);
+        }*/
     }
 }

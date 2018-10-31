@@ -172,7 +172,7 @@ void CreateRooms(){
 			drawPos = new Vector3(position.x*21,0f,position.y*13);
 			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity);
 			roomCreated.transform.parent = transform;
-			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene();
+			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene(roomToCreate.type);
 			if(roomToCreate.doorTop){
 				Instantiate(doorObject, drawPos+Vector3.forward * 6, Quaternion.identity).transform.parent = roomCreated.transform;
 			}

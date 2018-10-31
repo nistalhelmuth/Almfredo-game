@@ -63,19 +63,25 @@ public class RoomGeneration : MonoBehaviour {
 			}
 		}
 
-		public void SetupScene ()
+		public void SetupScene (int type)
 		{
+			switch (type)
+        {
+        case 0:
+            break;
+        case 1:
+            InitialiseList ();
+						LayoutObjectAtRandom (table, 3, 6);
+						LayoutObjectAtRandom (chair, 1, 3);
+						LayoutObjectAtRandom (shelf, 4, 6);
+						LayoutObjectAtRandom (enemy, 2, 5);
+            break;
+        case 2:
+            break;
+        default:
+            
+            break;
+        }	
 			
-			//Reset our list of gridpositions.
-			InitialiseList ();
-			
-			//Instantiate a random number of wall tiles based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (table, 3, 6);
-			LayoutObjectAtRandom (chair, 1, 3);
-			LayoutObjectAtRandom (shelf, 4, 6);
-
-			
-			//Instantiate a random number of enemies based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (enemy, 2, 5);
 		}
 }

@@ -193,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &503366023
 Transform:
   m_ObjectHideFlags: 0
@@ -397,7 +397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1532150889
 Transform:
   m_ObjectHideFlags: 0
@@ -413,6 +413,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1546440465
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404526770480368, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069861842956018, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+      propertyPath: m_Name
+      value: AlmfredoPrefab (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 136099807548554598, guid: 06b38edfdf8794eba8bd04a0a3f50120,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.45
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1818973642
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,5 +507,5 @@ MonoBehaviour:
   width: 7
   height: 5
   numberOfRooms: 10
-  roomObject: {fileID: 1917626711134714, guid: 98c64b745c56149938c292f42f0eebf1, type: 2}
-  doorObject: {fileID: 1082954482424630, guid: 18213f57be6be44f882fbcbb9f5f84b2, type: 2}
+  roomObject: {fileID: 1148943460783814, guid: 98c64b745c56149938c292f42f0eebf1, type: 2}
+  doorObject: {fileID: 1333252311799088, guid: abed5a5b0c12c4100858386929bf879b, type: 2}
