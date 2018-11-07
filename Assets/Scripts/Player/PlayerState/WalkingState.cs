@@ -3,39 +3,35 @@ using System.Collections;
 
 namespace Player
 {
-    public class WalkingState: PlayerState
+    public class WalkingState: MovementState
     {
 
-        public WalkingState(PlayerBehaviour player)
+        public WalkingState(PlayerBehaviour player): base(player)
         {
             this.Player = player;
-            Player.actionHandler += Walking;
+            Player.PhysicsHandler += Walking;
+            Player.ActionHandler += TheListener;
         }
 
-        public override PlayerState TheListener()
-        { 
+        public override void TheListener()
+        {
+            base.TheListener();
+
             if (Input.GetAxis(Player.HorizontalAxis) == 0 || Input.GetAxis(Player.VerticalAxis) == 0)
             {
-                Player.actionHandler -= Walking;
-                return new IdleState(Player);
+                Player.ActionHandler -= TheListener;
+                Player.PhysicsHandler -= Walking;
+                new IdleState(Player);
             }
-
-            if (Input.GetKeyDown("space")) 
-            {
-                Player.actionHandler -= Walking;
-                return new EatingState(Player);
-            }
-
-            return this;
         }
 
-        public void Walking(){
-            MonoBehaviour.print("WALKING");
+        public void Walking()
+        {
             Player.transform.forward = Vector3.Lerp(Player.transform.forward, Player.Mdirection, 0.5f);
-            
+
             //Player.transform.rotation = Quaternion.LookRotation(Player.Mdirection, Vector3.up);
             Player.body.velocity = Player.Mdirection * Time.deltaTime * Player.speed;
         }
-        
+
     }
 }

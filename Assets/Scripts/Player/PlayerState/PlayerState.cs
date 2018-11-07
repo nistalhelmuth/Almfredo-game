@@ -11,8 +11,11 @@ namespace Player
             set;
         }
 
-        public abstract PlayerState TheListener();
+        public PlayerState(PlayerBehaviour player)
+        {
+            this.Player = player;
+        }
 
-        
+        public abstract void TheListener();
     }
 }

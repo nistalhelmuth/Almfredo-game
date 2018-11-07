@@ -5,24 +5,23 @@ namespace Player
 {
     public class BaseState: PlayerState
     {
-        public BaseState(PlayerBehaviour player)
+        public BaseState(PlayerBehaviour player): base(player)
         {
-            this.Player = player;
-						Player.actionHandler += BASE;
-						//return new IdleState(player);
+            //return new IdleState(player);
         }
 
-        public override PlayerState TheListener()
+        public override void TheListener()
         {
-            return this;
+
         }
 
 
-				public void BASE(){
+        public void BASE()
+        {
             MonoBehaviour.print("BASE");
-						if (Input.GetKeyUp("space"))
+            if (Input.GetKeyUp("space"))
             {
-                MonoBehaviour.print("EAT");   
+                MonoBehaviour.print("EAT");
             }
         }
     }

@@ -6,19 +6,18 @@ namespace Player
 {
     public class PlayerBehaviour : MonoBehaviour
     {
-
-        
-        public PlayerState state
+        public Animator Anim
         {
-            get;
             set;
+            get;
         }
 
         public delegate void StateDelegate();
-        public StateDelegate actionHandler;
+        public StateDelegate ActionHandler;
+        public StateDelegate PhysicsHandler;
 
-        public string HorizontalAxis="Horizontal";
-        public string VerticalAxis="Vertical";
+        public string HorizontalAxis = "Horizontal";
+        public string VerticalAxis = "Vertical";
 
         public Rigidbody body;
         public Vector3 Mdirection;
@@ -27,27 +26,27 @@ namespace Player
 
         void Start ()
         {
-            state = new IdleState(this);
-            //state = new BaseState(this);
             body = GetComponent<Rigidbody>();
-            playerTrans= transform;
+            Anim = GetComponent<Animator>();
+            playerTrans = transform;
+            new IdleState(this);
         }
 
         void Update ()
         {
             Mdirection = new Vector3(Input.GetAxis(HorizontalAxis), 0f, Input.GetAxis(VerticalAxis));
-            state = state.TheListener();
+            ActionHandler();
         }
 
         void FixedUpdate()
         {
-            if (actionHandler != null)
+            if (PhysicsHandler != null)
             {
-                actionHandler();
+                PhysicsHandler();
             };
         }
 
-        /* 
+        /*
         void collision{
             new hurtState(Player);
         }*/

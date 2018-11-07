@@ -3,37 +3,23 @@ using System.Collections;
 
 namespace Player
 {
-    public class IdleState: PlayerState
+    public class IdleState: MovementState
     {
 
-        public IdleState(PlayerBehaviour player)
+        public IdleState(PlayerBehaviour player): base(player)
         {
-            this.Player = player;
-            Player.actionHandler += IDLE;
+            Player.ActionHandler += TheListener;
         }
 
-        public override PlayerState TheListener()
+        public override void TheListener()
         {
+            base.TheListener();
 
             if (Input.GetAxis(Player.HorizontalAxis) != 0 || Input.GetAxis(Player.VerticalAxis) != 0)
-            {   
-                Player.actionHandler -= IDLE;
-                return new WalkingState(Player);
-            }
-
-            if (Input.GetKeyDown("space")) 
             {
-                Player.actionHandler -= IDLE;
-                return new EatingState(Player);
+                Player.ActionHandler -= TheListener;
+                new WalkingState(Player);
             }
-
-            return this;
         }
-
-        public void IDLE(){
-            MonoBehaviour.print("IDLE");
-        }
-
-        
     }
 }
