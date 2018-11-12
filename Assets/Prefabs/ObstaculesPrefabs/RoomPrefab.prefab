@@ -214,7 +214,7 @@ MeshCollider:
   m_GameObject: {fileID: 1918684486413026}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f65cb8443d34f01a00be9e61834919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   enemy: {fileID: 1857246650869208, guid: a4d9b222ff0f84b148069a4ec0aff0ee, type: 2}
   chair: {fileID: 1339455043201752, guid: 7a2382c86ff2c41d4a838cf25956f294, type: 2}
   shelf: {fileID: 1370434258479364, guid: 8ddcda873ed304fa2941b5eaa8bae049, type: 2}
