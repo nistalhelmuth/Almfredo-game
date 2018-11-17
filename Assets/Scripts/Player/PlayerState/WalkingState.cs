@@ -28,7 +28,6 @@ namespace Player
         public void Walking()
         {
             Player.transform.forward = Vector3.Lerp(Player.transform.forward, Player.Mdirection, 0.5f);
-
             //Player.transform.rotation = Quaternion.LookRotation(Player.Mdirection, Vector3.up);
             Player.body.velocity = Player.Mdirection * Time.deltaTime * Player.speed;
         }

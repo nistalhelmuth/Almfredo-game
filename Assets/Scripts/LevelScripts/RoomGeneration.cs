@@ -94,8 +94,6 @@ public class RoomGeneration : MonoBehaviour {
 		}	
 	}
 
-	
-
 	void OnCollisionEnter(Collision collision)
   {
       if (collision.gameObject.tag == "Player"){

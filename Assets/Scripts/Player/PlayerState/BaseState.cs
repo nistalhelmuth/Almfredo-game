@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Player
 {
     public class BaseState: PlayerState
     {
+        private RaycastHit hit;
+        private GameObject objectHit;
         public BaseState(PlayerBehaviour player): base(player)
         {
             //return new IdleState(player);
@@ -12,15 +15,25 @@ namespace Player
 
         public override void TheListener()
         {
-
+            MonoBehaviour.print(Player.transform.position);
+            MonoBehaviour.print(Player.Mdirection);
         }
 
 
         public void BASE()
         {
+            
+            if (Physics.Raycast(Player.transform.position, Player.Mdirection, out hit)){
+                MonoBehaviour.print(hit.distance);
+                    
+            }
             MonoBehaviour.print("BASE");
-            if (Input.GetKeyUp("space"))
+            if (Input.GetKeyDown("space"))
             {
+                if (Physics.Raycast(Player.transform.position, Player.Mdirection, out hit)){
+                    MonoBehaviour.print(hit.distance);
+                     
+                }
                 MonoBehaviour.print("EAT");
             }
         }

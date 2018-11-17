@@ -8,6 +8,7 @@ namespace Player
 
         public IdleState(PlayerBehaviour player): base(player)
         {
+            this.Player = player;
             Player.ActionHandler += TheListener;
         }
 
