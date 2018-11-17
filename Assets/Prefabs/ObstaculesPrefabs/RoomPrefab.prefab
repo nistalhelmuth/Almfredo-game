@@ -284,5 +284,8 @@ MonoBehaviour:
   chair: {fileID: 1339455043201752, guid: 7a2382c86ff2c41d4a838cf25956f294, type: 2}
   shelf: {fileID: 1370434258479364, guid: 8ddcda873ed304fa2941b5eaa8bae049, type: 2}
   table: {fileID: 1374310517524138, guid: 5080b10a3c12b483ab6cc28754530566, type: 2}
+  mapRoom: {fileID: 0}
+  type: 0
+  roomClear: 0
   columns: 16
   rows: 8

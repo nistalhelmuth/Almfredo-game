@@ -21,7 +21,7 @@ public class LevelGeneration : MonoBehaviour {
 	List<Vector2> takenPositions = new List<Vector2>();
 	public int width, height, numberOfRooms;
 	public GameObject roomObject;
-	public GameObject doorObject;
+	public GameObject[] doorObject;
 	public GameObject[] roomWhiteObj;
 	public Transform mapRoot;
 
@@ -209,22 +209,23 @@ void CreateRooms(){
 		for (int i = 0; i<numberOfRooms;i++){	
 			Room roomToCreate = rooms[(int)takenPositions[i].x+width,(int)takenPositions[i].y+height];
 			position = roomToCreate.gridPos;
-			drawPos = new Vector3(position.x*21,0f,position.y*13);
+			drawPos = new Vector3(position.x*21.25f,0f,position.y*12.75f);
 			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity);
 			roomCreated.transform.parent = transform;
 			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene(roomToCreate.type, roomToCreate.mapRoom, camera);
-			
 			if(!roomToCreate.doorTop){
-				Instantiate(doorObject, drawPos+Vector3.forward * 6, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject[0], drawPos+Vector3.forward * 5.3f, Quaternion.identity, roomCreated.transform);
 			}
+			
 			if(!roomToCreate.doorRight){
-				Instantiate(doorObject, drawPos+Vector3.right * 10, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject[1], drawPos+Vector3.right * 9.37f, Quaternion.identity, roomCreated.transform); 
 			}
+			
 			if(!roomToCreate.doorBot){
-				Instantiate(doorObject, drawPos+Vector3.back * 6, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject[2], drawPos+Vector3.back * 5.3f, Quaternion.identity, roomCreated.transform);
 			}
 			if(!roomToCreate.doorLeft){
-				Instantiate(doorObject, drawPos+Vector3.left * 10, Quaternion.identity).transform.parent = roomCreated.transform;
+				Instantiate(doorObject[3], drawPos+Vector3.left * 9.37f, Quaternion.identity, roomCreated.transform);
 			}
 			 
 		}

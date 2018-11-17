@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1118937528882914}
+  m_IsPrefabAsset: 1
+--- !u!1 &1118937528882914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4754967493886576}
+  - component: {fileID: 114372205608291352}
+  m_Layer: 0
+  m_Name: RoomMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4754967493886576
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118937528882914}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114372205608291352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118937528882914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893177c5913054da0b3dd2a886aa0c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 7
+  height: 5
+  numberOfRooms: 5
+  roomObject: {fileID: 1422529205087220, guid: 98c64b745c56149938c292f42f0eebf1, type: 2}
+  doorObject:
+  - {fileID: 1089897983005828, guid: 7d5b099aeeb9a432d856556afa3d0102, type: 2}
+  - {fileID: 1405376804798396, guid: f2bf731654ccd4cf9b00e99002db0edd, type: 2}
+  - {fileID: 1378841598326342, guid: a4c2d81fcb2d94a8f8403abfd1cd7e5e, type: 2}
+  - {fileID: 1125578701838162, guid: 124b1bf5712494c8f8b9e5049957394c, type: 2}
+  roomWhiteObj:
+  - {fileID: 1426553167329652, guid: 52dca7a7603d54693bbfa034be4ced6f, type: 2}
+  - {fileID: 1644002369955506, guid: 1d2f6a74512174dbc981100a81dce3a4, type: 2}
+  - {fileID: 1769053625634824, guid: 5ab8ebea88197467bbd652ad171d278b, type: 2}
+  mapRoot: {fileID: 0}
+  camera: {fileID: 0}
