@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Player
 {
@@ -14,8 +15,6 @@ namespace Player
 
         public override void TheListener()
         {
-            
-            
             if (Input.GetKeyDown("space")) //optimisar esto, se siente feo
             {
                 this.Player.Anim.SetTrigger("Eating");
@@ -31,20 +30,11 @@ namespace Player
             if (Physics.Raycast(Player.transform.position, Player.transform.forward, out hit)){
                 if (hit.distance < 1f && hit.transform.gameObject.tag == "Enemy") {
                     MonoBehaviour.Destroy(hit.transform.gameObject);
-                    //objectHit = hit.transform.gameObject; 
-                    //MonoBehaviour.print(objectHit.gameObject.tag);       
                 }   
             }
             Player.ActionHandler -= ShootAction;
+            
         }   
-        
-        public void takeHeal(){
-
-        }
-
-        public void HealAction(){
-
-        }
 
         
     }

@@ -23,19 +23,6 @@ namespace Player
         public void BASE()
         {
             
-            if (Physics.Raycast(Player.transform.position, Player.Mdirection, out hit)){
-                MonoBehaviour.print(hit.distance);
-                    
-            }
-            MonoBehaviour.print("BASE");
-            if (Input.GetKeyDown("space"))
-            {
-                if (Physics.Raycast(Player.transform.position, Player.Mdirection, out hit)){
-                    MonoBehaviour.print(hit.distance);
-                     
-                }
-                MonoBehaviour.print("EAT");
-            }
         }
     }
 }

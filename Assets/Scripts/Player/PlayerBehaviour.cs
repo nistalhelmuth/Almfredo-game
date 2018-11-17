@@ -25,22 +25,20 @@ namespace Player
         public Renderer playerRender;
         public float speed;
 
-        public float invicibilityCounter;
-        public float flashCounter;
+        private float invicibilityCounter;
+        private float flashCounter;
 
         void Start ()
         {
             body = GetComponent<Rigidbody>();
             Anim = GetComponent<Animator>();
             new IdleState(this);
-            
         }
 
         void Update ()
         {
             Mdirection = new Vector3(Input.GetAxis(HorizontalAxis), 0f, Input.GetAxis(VerticalAxis));
             ActionHandler();
-            
         }
 
         void FixedUpdate()
@@ -53,7 +51,6 @@ namespace Player
         }
 
         public void takeDmg(Vector3 _hitDirection){
-
             if (invicibilityCounter <= 0){    
                 body.velocity = Vector3.zero;
                 body.AddForce(_hitDirection * 3f, ForceMode.VelocityChange);

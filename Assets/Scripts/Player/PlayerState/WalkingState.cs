@@ -17,7 +17,7 @@ namespace Player
         {
             base.TheListener();
 
-            if (Input.GetAxis(Player.HorizontalAxis) == 0 || Input.GetAxis(Player.VerticalAxis) == 0)
+            if (Input.GetAxis(Player.HorizontalAxis) == 0 && Input.GetAxis(Player.VerticalAxis) == 0)
             {
                 Player.ActionHandler -= TheListener;
                 Player.PhysicsHandler -= Walking;
