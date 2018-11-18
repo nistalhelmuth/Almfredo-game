@@ -25,6 +25,8 @@ namespace Player
         public Renderer playerRender;
         public float speed;
 
+        public float playerDeltaTime;
+
         private float invicibilityCounter;
         private float flashCounter;
 
@@ -38,6 +40,7 @@ namespace Player
         void Update ()
         {
             Mdirection = new Vector3(Input.GetAxis(HorizontalAxis), 0f, Input.GetAxis(VerticalAxis));
+            playerDeltaTime = Time.deltaTime;
             ActionHandler();
         }
 
