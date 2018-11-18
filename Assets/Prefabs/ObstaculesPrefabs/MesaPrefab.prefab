@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 4807502247674476}
   - component: {fileID: 33163354037888686}
   - component: {fileID: 136061359946544066}
+  - component: {fileID: 208352206286925354}
   m_Layer: 0
   m_Name: MesaPrefab
   m_TagString: Untagged
@@ -187,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374310517524138}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.128, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768711430030960}
@@ -378,7 +379,22 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5425986
+  m_Radius: 0.6
   m_Height: 1.0851972
   m_Direction: 1
-  m_Center: {x: 0.042598605, y: 0.33000004, z: 0}
+  m_Center: {x: 0, y: 0.33000004, z: 0}
+--- !u!208 &208352206286925354
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374310517524138}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.6, y: 0.5425985, z: 0.6}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.33, z: 0}
+  m_TimeToStationary: 0.5

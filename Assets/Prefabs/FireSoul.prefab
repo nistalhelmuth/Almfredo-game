@@ -100,9 +100,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4846336956984282}
   - component: {fileID: 95821331168292544}
+  - component: {fileID: 114919676689054992}
+  - component: {fileID: 195317695435967020}
   m_Layer: 0
   m_Name: FireSoul
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,8 +288,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637327547547530}
-  m_LocalRotation: {x: 0, y: 0.9659259, z: 0.258819, w: 0}
-  m_LocalPosition: {x: -2.5051785, y: 0.06, z: -0.05}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4228368822238610}
@@ -296,7 +298,7 @@ Transform:
   - {fileID: 4152239955615182}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -30, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4854225732510180
 Transform:
   m_ObjectHideFlags: 1
@@ -328,6 +330,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114919676689054992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637327547547530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe63ca858497d4f568b59b290416f5ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Life: 3
+  PlayerDistance: 4
 --- !u!137 &137090808809217250
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -472,6 +487,27 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000000013969839, y: 0.0056899227, z: 0.0000000013969839}
     m_Extent: {x: 0.006586562, y: 0.008400188, z: 0.006586565}
   m_DirtyAABB: 0
+--- !u!195 &195317695435967020
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637327547547530}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.7
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &198069557664019230
 ParticleSystem:
   m_ObjectHideFlags: 1
