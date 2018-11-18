@@ -684,6 +684,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 137165712503022808, guid: 06b38edfdf8794eba8bd04a0a3f50120,
+        type: 2}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137004254768073468, guid: 06b38edfdf8794eba8bd04a0a3f50120,
+        type: 2}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137864382100175940, guid: 06b38edfdf8794eba8bd04a0a3f50120,
+        type: 2}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4215497683148514, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
