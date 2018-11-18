@@ -8,13 +8,13 @@ namespace Player
 
         public IdleState(PlayerBehaviour player): base(player)
         {
+            this.Player = player;
             Player.ActionHandler += TheListener;
         }
 
         public override void TheListener()
         {
             base.TheListener();
-
             if (Input.GetAxis(Player.HorizontalAxis) != 0 || Input.GetAxis(Player.VerticalAxis) != 0)
             {
                 Player.ActionHandler -= TheListener;

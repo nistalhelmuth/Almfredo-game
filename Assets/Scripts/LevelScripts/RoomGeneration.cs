@@ -5,11 +5,15 @@ using UnityEngine;
 public class RoomGeneration : MonoBehaviour {
 
 
-	private Transform camera;
+	public Transform camera;
 	public GameObject enemy;
 	public GameObject chair;
 	public GameObject shelf;
 	public GameObject table;
+
+	public GameObject mapRoom;
+	public int type;
+	public bool roomClear;
 	private List <Vector3> gridPositions = new List <Vector3> ();	
 
 	public int columns = 16; 										//Number of columns in our game board.
@@ -65,24 +69,26 @@ public class RoomGeneration : MonoBehaviour {
 		}
 	}
 
-	public void SetupScene (int type, Transform cameraprop)
+	public void SetupScene (int _type, GameObject _mapRoom, Transform cameraprop)
 	{
 		camera = cameraprop;
+		mapRoom = _mapRoom;
+		type = _type;
 		switch (type)
 		{
 		case 0:	//cuando hay que poner algo en el cuarto
 
 			//aqui podes tirar un random y evaluar segun la opcion
 			//la unica opcion que esta ahorita es la de llenar el cuarto random
-
+			roomClear = false;
 			InitialiseList ();
 			LayoutObjectAtRandom (table, 3, 6);
 			LayoutObjectAtRandom (chair, 1, 3);
 			LayoutObjectAtRandom (shelf, 4, 6);
-			LayoutObjectAtRandom (enemy, 2, 5);
+
 			break;
 		case 1: //cuarto de start
-			
+			mapRoom.SetActive(true);
 			break;
 		case 2: //ultimo cuarto
 
@@ -90,13 +96,16 @@ public class RoomGeneration : MonoBehaviour {
 		}	
 	}
 
-	
-
 	void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player"){
-			Vector3 dif = new Vector3(transform.position.x - camera.position.x, 0f,transform.position.z - camera.position.z);
-			camera.Translate(dif);
+  {
+      if (collision.gameObject.tag == "Player"){
+				Vector3 dif = new Vector3(transform.position.x - camera.position.x, 0f,transform.position.z - camera.position.z);
+				if (type == 0 && !roomClear) {
+					LayoutObjectAtRandom (enemy, 2, 5);
+					roomClear = true;
+				}
+				camera.Translate(dif);
+				mapRoom.SetActive(true);
 		}
     }
 
