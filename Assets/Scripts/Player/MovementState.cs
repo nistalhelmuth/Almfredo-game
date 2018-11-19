@@ -6,7 +6,7 @@ namespace Player
     public class MovementState: PlayerState
     {
 
-        public float rayCounter;
+        private float rayCounter;
 
         private float powerLength;
         private float powerCounter;
@@ -45,10 +45,12 @@ namespace Player
         public void powerTimer()
         {
             powerCounter -= Player.playerDeltaTime;
-            if (powerCounter < 0)
-            {
+
+            Player.powerBar.sizeDelta = new Vector2(powerCounter*100.0f / 5.0f , Player.powerBar.sizeDelta.y);
+            if (powerCounter < 0) {
                 Player.playerState = -1;
                 Player.ActionHandler -= powerTimer;
+                Player.powerCanvas.SetActive(false);
             }
         }
 
@@ -58,6 +60,7 @@ namespace Player
             {
                 MonoBehaviour.Destroy(hit.transform.gameObject);
                 Player.ActionHandler += powerTimer;
+                Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 0;
             }
@@ -65,6 +68,7 @@ namespace Player
             {
                 MonoBehaviour.Destroy(hit.transform.gameObject);
                 Player.ActionHandler += powerTimer;
+                Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 1;
             }
