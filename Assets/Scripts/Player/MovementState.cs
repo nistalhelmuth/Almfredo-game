@@ -22,49 +22,55 @@ namespace Player
         {
 
 
-            if (Input.GetKeyDown("space")) 
+            if (Input.GetKeyDown("space"))
             {
                 if (Player.playerState == -1) //no tiene poderes
                 {
                     this.Player.Anim.SetTrigger("Eating");
                     rayCounter = 0.5f;
                     Player.ActionHandler += EatAction;
-                } 
-                else if(Player.playerState == 0)  //poder de fuego
-                {  
+                }
+                else if (Player.playerState == 0) //poder de fuego
+                {
                     Player.ActionHandler += ShootAction;
                 }
             }
             else if (Input.GetKeyDown("enter"))
             {
                 this.Player.Anim.SetTrigger("Dashing");
-                
+
             }
         }
 
-        public void powerTimer(){
+        public void powerTimer()
+        {
             powerCounter -= Player.playerDeltaTime;
-            if (powerCounter < 0) {
+            if (powerCounter < 0)
+            {
                 Player.playerState = -1;
                 Player.ActionHandler -= powerTimer;
             }
         }
 
-        public void AbsorbHandler(RaycastHit hit) {
-            if (hit.transform.gameObject.name == "FireSoul(Clone)") {
+        public void AbsorbHandler(RaycastHit hit)
+        {
+            if (hit.transform.gameObject.name == "FireSoul(Clone)")
+            {
                 MonoBehaviour.Destroy(hit.transform.gameObject);
                 Player.ActionHandler += powerTimer;
                 powerCounter = powerLength;
                 Player.playerState = 0;
-            } else if (hit.transform.gameObject.name == "otherEnemy(Clone)") {
+            }
+            else if (hit.transform.gameObject.name == "otherEnemy(Clone)")
+            {
                 MonoBehaviour.Destroy(hit.transform.gameObject);
                 Player.ActionHandler += powerTimer;
                 powerCounter = powerLength;
                 Player.playerState = 1;
-            } 
+            }
 
         }
-        
+
         public void EatAction()
         {
             Player.eating = true;
@@ -84,25 +90,27 @@ namespace Player
             if (frontRay && hitFront.distance < 1)
             {
                 AbsorbHandler(hitFront);
-            } 
+            }
             else if (leftRay && hitLeft.distance < 1)
             {
                 AbsorbHandler(hitFront);
-            } 
+            }
             else if (rightRay && hitRight.distance < 1)
             {
                 AbsorbHandler(hitFront);
             }
 
             rayCounter -= Player.playerDeltaTime;
-            if(rayCounter < 0) {
+            if (rayCounter < 0)
+            {
                 Player.eating = false;
                 Player.ActionHandler -= EatAction;
             }
-        }   
+        }
 
-        public void AbsorvEnemy(GameObject Enemy){
-            if (Enemy.transform.gameObject.name == "FlameSoul") 
+        public void AbsorvEnemy(GameObject Enemy)
+        {
+            if (Enemy.transform.gameObject.name == "FlameSoul")
             {
                 MonoBehaviour.print("soul");
                 Player.playerState = 0;
@@ -111,18 +119,15 @@ namespace Player
 
         public void ShootAction()
         {
-            GameObject fireBall =MonoBehaviour.Instantiate(
-				Player.fireBallPrefab,
-				Player.transform.position+ Player.transform.forward * 0.6f,
-				Player.transform.rotation);
-		
-            fireBall.GetComponent<Rigidbody>().velocity = fireBall.transform.forward * 10.0f;
+            MonoBehaviour.Instantiate(
+                Player.fireBallPrefab,
+                Player.transform.position + Player.transform.forward * 0.6f,
+                Player.transform.rotation);
 
             //NetworkServer.Spawn(bullet);
 
-            MonoBehaviour.Destroy(fireBall, 2.0f); 
             Player.ActionHandler -= ShootAction;
         }
-        
+
     }
 }
