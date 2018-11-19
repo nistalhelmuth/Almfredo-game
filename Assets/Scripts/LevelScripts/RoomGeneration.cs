@@ -69,28 +69,27 @@ public class RoomGeneration : MonoBehaviour
             //Choose a random tile from tileArray and assign it to tileChoice
 
             //Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
-            GameObject instance = Instantiate(objectType, randomPosition + objectType.transform.position, Quaternion.identity);
-            instance.transform.parent = this.transform;
-            if (instance.CompareTag("Enemy"))
-            {
-                for (int e = 0; e < 3; e++)
-                {
-                    instance.GetComponent<Enemy>().AddKeyPosition(RandomPosition());
-                }
-            }
+            Instantiate(objectType, randomPosition + objectType.transform.position, Quaternion.identity).transform.parent = this.transform;
         }
     }
 
-    void LayoutEnemyAtRandom (int minimum, int maximum ){
-		int enemycount = Random.Range(minimum, maximum+1);
-	
-		for (int i = 0; i<enemycount; i++)
-		{
-			int randomEnemy = Random.Range(0, enemies.Length-1);
-			Vector3 randomPosition = RandomPosition();
-			Instantiate(enemies[randomEnemy], randomPosition, Quaternion.identity).transform.parent = this.transform;
-		}
-	}
+    void LayoutEnemyAtRandom (int minimum, int maximum )
+    {
+        int enemycount = Random.Range(minimum, maximum + 1);
+
+        for (int i = 0; i < enemycount; i++)
+        {
+            int randomEnemy = Random.Range(0, enemies.Length - 1);
+            Vector3 randomPosition = RandomPosition();
+            GameObject instance = Instantiate(enemies[randomEnemy], randomPosition, Quaternion.identity);
+            instance.transform.parent = this.transform;
+            // Se le asigna varias posiciones de "escape" al enemigo instanciado
+            for (int e = 0; e < 3; e++)
+            {
+                instance.GetComponent<Enemy>().AddKeyPosition(RandomPosition());
+            }
+        }
+    }
 
     public void SetupScene (int _type, GameObject _mapRoom, Transform cameraprop)
     {
@@ -128,7 +127,7 @@ public class RoomGeneration : MonoBehaviour
             {
                 NavMeshSurface navSurface = transform.Find("NavMesh").GetComponent<NavMeshSurface>();
                 navSurface.BuildNavMesh();
-                LayoutEnemyAtRandom ( 2, 5);
+                LayoutEnemyAtRandom (2, 5);
                 roomClear = true;
             }
             camera.Translate(dif);
