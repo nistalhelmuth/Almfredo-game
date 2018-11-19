@@ -6,10 +6,14 @@ namespace Enemies
     public class FireEnemy: Enemy
     {
         public float PlayerDistance;
+        public GameObject Fireball;
+
+        private int nextShotTime;
 
         protected override void Start()
         {
             base.Start();
+            nextShotTime = Random.Range(2,5);
             StartCoroutine("Shoot");
         }
 
@@ -34,8 +38,11 @@ namespace Enemies
 
         IEnumerator Shoot()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(nextShotTime);
             anim.SetTrigger("Shoot");
+            yield return new WaitForSeconds(0.4f);
+            Instantiate(Fireball, transform.position + transform.forward * 0.4f, transform.rotation);
+            nextShotTime = Random.Range(2,5);
             StartCoroutine("Shoot");
         }
     }
