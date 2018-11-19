@@ -28,10 +28,12 @@ namespace Player
                 {
                     this.Player.Anim.SetTrigger("Eating");
                     rayCounter = 0.5f;
+                    Player.MusicSource.PlayOneShot(Player.biteSound, 1F);
                     Player.ActionHandler += EatAction;
                 }
                 else if (Player.playerState == 0) //poder de fuego
                 {
+                    Player.MusicSource.PlayOneShot(Player.shootSound, 1F);
                     Player.ActionHandler += ShootAction;
                 }
             }
