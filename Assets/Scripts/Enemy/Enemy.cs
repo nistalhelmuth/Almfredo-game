@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,15 +12,17 @@ namespace Enemies
         protected GameObject playerToFollow;
         protected NavMeshAgent navAgent;
         protected List<Vector3> keyPositions = new List<Vector3>();
+        protected Animator anim;
 
-        void Start()
+        protected virtual void Start()
         {
             GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
-            playerToFollow = allPlayers[Random.Range(0, allPlayers.Length - 1)];
+            playerToFollow = allPlayers[UnityEngine.Random.Range(0, allPlayers.Length - 1)];
             navAgent = GetComponent<NavMeshAgent>();
+            anim = GetComponent<Animator>();
         }
 
-        public virtual void Update()
+        protected virtual void Update()
         {
             transform.LookAt(playerToFollow.transform.position);
         }
@@ -29,9 +32,12 @@ namespace Enemies
             keyPositions.Add(position);
         }
 
-        public Vector3 GetRandomKeyPosition()
+        public Nullable<Vector3> GetRandomKeyPosition()
         {
-            return keyPositions[Random.Range(0, keyPositions.Count)];
+            if(keyPositions.Count != 0){
+                return keyPositions[UnityEngine.Random.Range(0, keyPositions.Count)];
+            }
+            return null;
         }
     }
 }

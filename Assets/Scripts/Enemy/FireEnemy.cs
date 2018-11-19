@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Enemies
 {
@@ -6,7 +7,13 @@ namespace Enemies
     {
         public float PlayerDistance;
 
-        public override void Update()
+        protected override void Start()
+        {
+            base.Start();
+            StartCoroutine("Shoot");
+        }
+
+        protected override void Update()
         {
             base.Update();
 
@@ -16,9 +23,20 @@ namespace Enemies
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 if (navAgent.velocity == Vector3.zero)
                 {
-                    navAgent.SetDestination(GetRandomKeyPosition());
+                    Vector3? keyPosition = GetRandomKeyPosition();
+                    if (keyPosition != null)
+                    {
+                        navAgent.SetDestination(keyPosition.Value);
+                    }
                 }
             }
+        }
+
+        IEnumerator Shoot()
+        {
+            yield return new WaitForSeconds(3f);
+            anim.SetTrigger("Shoot");
+            StartCoroutine("Shoot");
         }
     }
 }
