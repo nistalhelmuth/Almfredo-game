@@ -11,29 +11,42 @@ namespace Player
             set;
             get;
         }
-
+        public int playerState 
+        {
+            set;
+            get;
+        }
+        public float playerDeltaTime
+        {
+            set;
+            get;
+        }
+        public Vector3 Mdirection
+        {
+            set;
+            get;
+        }
         public delegate void StateDelegate();
         public StateDelegate ActionHandler;
         public StateDelegate PhysicsHandler;
-
         public string HorizontalAxis = "Horizontal";
         public string VerticalAxis = "Vertical";
-
-        public Rigidbody body;
-        public Vector3 Mdirection;
-        public Vector3 hitDirection;
-        public Renderer playerRender;
+        public GameObject fireBallPrefab;
         public float speed;
-
-        public float playerDeltaTime;
-
         private float invicibilityCounter;
         private float flashCounter;
+
+        public Rigidbody body;
+        
+        public Renderer playerRender;
+        public bool eating;
 
         void Start ()
         {
             body = GetComponent<Rigidbody>();
             Anim = GetComponent<Animator>();
+            playerState = -1; //no tiene poderes
+            eating=false;
             new IdleState(this);
         }
 
@@ -53,8 +66,10 @@ namespace Player
             
         }
 
-        public void takeDmg(Vector3 _hitDirection){
-            if (invicibilityCounter <= 0){    
+        public void takeDmg(Vector3 _hitDirection)
+        {
+            if (invicibilityCounter <= 0 && !eating)
+            {    
                 body.velocity = Vector3.zero;
                 body.AddForce(_hitDirection * 3f, ForceMode.VelocityChange);
                 transform.forward = _hitDirection;
@@ -65,15 +80,20 @@ namespace Player
             }
         }
 
-        public void HurtAction(){
-            if (invicibilityCounter > 0) {
+        public void HurtAction()
+        {
+            if (invicibilityCounter > 0)
+            {
                 invicibilityCounter -= Time.deltaTime;
                 flashCounter -= Time.deltaTime;
-                if (flashCounter <= 0) {
+                if (flashCounter <= 0) 
+                {
                     playerRender.enabled = !playerRender.enabled;
                     flashCounter = 0.1f;
                 }
-            } else {
+            } 
+            else 
+            {
                 playerRender.enabled = true;
                 PhysicsHandler -= HurtAction;
             }

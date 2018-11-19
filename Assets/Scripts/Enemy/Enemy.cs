@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Player;
 
 namespace Enemies
 {
@@ -33,5 +34,15 @@ namespace Enemies
         {
             return keyPositions[Random.Range(0, keyPositions.Count)];
         }
+
+        void OnCollisionEnter(Collision collision)
+		{
+			if (collision.gameObject.tag == "Player") 
+			{
+				Vector3 hitDirection = collision.transform.position - transform.position;
+				hitDirection = hitDirection.normalized;	
+				collision.gameObject.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
+			}
+		}
     }
 }

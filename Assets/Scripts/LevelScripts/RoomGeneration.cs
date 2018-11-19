@@ -9,7 +9,7 @@ public class RoomGeneration : MonoBehaviour
 
 
     public Transform camera;
-    public GameObject enemy;
+    public GameObject[] enemies;
     public GameObject chair;
     public GameObject shelf;
     public GameObject table;
@@ -81,6 +81,17 @@ public class RoomGeneration : MonoBehaviour
         }
     }
 
+    void LayoutEnemyAtRandom (int minimum, int maximum ){
+		int enemycount = Random.Range(minimum, maximum+1);
+	
+		for (int i = 0; i<enemycount; i++)
+		{
+			int randomEnemy = Random.Range(0, enemies.Length-1);
+			Vector3 randomPosition = RandomPosition();
+			Instantiate(enemies[randomEnemy], randomPosition, Quaternion.identity).transform.parent = this.transform;
+		}
+	}
+
     public void SetupScene (int _type, GameObject _mapRoom, Transform cameraprop)
     {
         camera = cameraprop;
@@ -117,7 +128,7 @@ public class RoomGeneration : MonoBehaviour
             {
                 NavMeshSurface navSurface = transform.Find("NavMesh").GetComponent<NavMeshSurface>();
                 navSurface.BuildNavMesh();
-                LayoutObjectAtRandom (enemy, 2, 5);
+                LayoutEnemyAtRandom ( 2, 5);
                 roomClear = true;
             }
             camera.Translate(dif);

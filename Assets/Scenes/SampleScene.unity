@@ -411,7 +411,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 279
+    m_Bits: 791
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -716,10 +716,6 @@ Prefab:
     - target: {fileID: 4215497683148514, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1211834685530622, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
-      propertyPath: m_Name
-      value: AlmfredoPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06b38edfdf8794eba8bd04a0a3f50120, type: 2}
