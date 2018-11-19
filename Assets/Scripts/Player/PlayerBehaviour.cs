@@ -32,6 +32,8 @@ namespace Player
         public string HorizontalAxis = "Horizontal";
         public string VerticalAxis = "Vertical";
         public GameObject fireBallPrefab;
+        public RectTransform powerBar;
+        public GameObject powerCanvas;
         public float speed;
         private float invicibilityCounter;
         private float flashCounter;
@@ -45,6 +47,7 @@ namespace Player
         {
             body = GetComponent<Rigidbody>();
             Anim = GetComponent<Animator>();
+            powerCanvas.SetActive(false);
             playerState = -1; //no tiene poderes
             eating=false;
             new IdleState(this);
@@ -54,6 +57,7 @@ namespace Player
         {
             Mdirection = new Vector3(Input.GetAxis(HorizontalAxis), 0f, Input.GetAxis(VerticalAxis));
             playerDeltaTime = Time.deltaTime;
+            powerCanvas.transform.LookAt(Camera.main.transform);
             ActionHandler();
         }
 
