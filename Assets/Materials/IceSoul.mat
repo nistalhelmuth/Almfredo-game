@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FireSoul
+  m_Name: IceSoul
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.764151, g: 0.42327642, b: 0.15859738, a: 1}
-    - _EmissionColor: {r: 1, g: 0.36182022, b: 0.13207549, a: 1}
+    - _Color: {r: 0.044855833, g: 0.7924528, b: 0.7240191, a: 1}
+    - _EmissionColor: {r: 0.18396226, g: 0.38731742, b: 0.5, a: 1}
