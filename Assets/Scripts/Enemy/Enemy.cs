@@ -50,5 +50,10 @@ namespace Enemies
 				collision.gameObject.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
 			}
 		}
+
+        void OnDestroy()
+        {
+            Debug.Log("OnDestroy1");
+        }
     }
 }

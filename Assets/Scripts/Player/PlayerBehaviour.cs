@@ -27,6 +27,10 @@ namespace Player
             get;
         }
         public delegate void StateDelegate();
+        public AudioClip shootSound;
+        public AudioClip hurtSound;
+        public AudioClip biteSound;
+        public AudioSource MusicSource;
         public StateDelegate ActionHandler;
         public StateDelegate PhysicsHandler;
         public string HorizontalAxis = "Horizontal";
@@ -74,6 +78,7 @@ namespace Player
         {
             if (invicibilityCounter <= 0 && !eating)
             {    
+                MusicSource.PlayOneShot(hurtSound, 1F);
                 body.velocity = Vector3.zero;
                 body.AddForce(_hitDirection * 3f, ForceMode.VelocityChange);
                 transform.forward = _hitDirection;
