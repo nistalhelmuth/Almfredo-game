@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour {
 		soulsText.text =  currentSouls.ToString();
 	}
 	
-	public void AddSouls(int souls){
-		currentSouls += souls;
+	public void AddSouls(){
+		currentSouls += 1;
 		soulsText.text = currentSouls.ToString();
 	}
 

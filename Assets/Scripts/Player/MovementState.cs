@@ -12,10 +12,13 @@ namespace Player
         private float powerCounter;
         private RaycastHit hitFront, hitLeft, hitRight;
 
+        private GameManager gameManager;
+
         public MovementState(PlayerBehaviour player): base(player)
         {
             this.Player = player;
             powerLength = 5;    //cinco segundos de powerUp
+            gameManager = MonoBehaviour.FindObjectOfType<GameManager>();
         }
 
         public override void TheListener()
@@ -65,6 +68,7 @@ namespace Player
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 0;
+                gameManager.AddSouls();
             }
             else if (hit.transform.gameObject.name == "otherEnemy(Clone)")
             {
@@ -73,6 +77,7 @@ namespace Player
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 1;
+                gameManager.AddSouls();
             }
 
         }

@@ -61,7 +61,6 @@ namespace Player
         {
             Mdirection = new Vector3(Input.GetAxis(HorizontalAxis), 0f, Input.GetAxis(VerticalAxis));
             playerDeltaTime = Time.deltaTime;
-            powerCanvas.transform.LookAt(Camera.main.transform);
             ActionHandler();
         }
 
