@@ -38,6 +38,7 @@ namespace Player
         public string HorizontalViewAxis = "HorizontalView";
         public string VerticalViewAxis = "VerticalView";
         public GameObject fireBallPrefab;
+        public GameObject iceSpikePrefab;
         public RectTransform powerBar;
         public GameObject powerCanvas;
         public float speed;

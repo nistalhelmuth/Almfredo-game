@@ -44,6 +44,7 @@ public class FireBallBehaviour : MonoBehaviour
             {
                 
                 Destroy(obj);
+                Destroy(gameObject);
                 gameManager.AddSouls();
             }
             break;
