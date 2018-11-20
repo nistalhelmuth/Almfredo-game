@@ -1738,7 +1738,7 @@ Prefab:
         type: 2}
       propertyPath: fireBallPrefab
       value: 
-      objectReference: {fileID: 1568770733036500, guid: 8938a74b3a0924463895d3606ed5d8d1,
+      objectReference: {fileID: 1568770733036500, guid: 32c2f45243794499e96017ba509f1692,
         type: 2}
     - target: {fileID: 114361670394238218, guid: 06b38edfdf8794eba8bd04a0a3f50120,
         type: 2}

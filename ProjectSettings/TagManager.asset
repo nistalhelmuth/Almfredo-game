@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Obstacle
+  - DeadSoul
   layers:
   - Default
   - TransparentFX

@@ -68,7 +68,6 @@ namespace Player
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 0;
-                gameManager.AddSouls();
             }
             else if (hit.transform.gameObject.name == "IceSoul(Clone)")
             {
@@ -77,6 +76,10 @@ namespace Player
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 1;
+            }
+            else if (hit.transform.gameObject.name == "DeadSoul(Clone)")
+            {
+                MonoBehaviour.Destroy(hit.transform.gameObject);
                 gameManager.AddSouls();
             }
 

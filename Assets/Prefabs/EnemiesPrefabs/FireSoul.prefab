@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 3
   PlayerDistance: 4
+  DeadSoul: {fileID: 1627176123297076, guid: 143abcc4dc0424cdaa7452550bb9d8b2, type: 2}
   Fireball: {fileID: 1568770733036500, guid: 8938a74b3a0924463895d3606ed5d8d1, type: 2}
 --- !u!136 &136070235168164580
 CapsuleCollider:
