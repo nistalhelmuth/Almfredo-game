@@ -10,6 +10,7 @@ namespace Enemies
     {
         public int Life;
         public float PlayerDistance;
+        public GameObject DeadSoul;
 
         protected GameObject playerToFollow;
         protected NavMeshAgent navAgent;
@@ -38,21 +39,28 @@ namespace Enemies
 
         public Nullable<Vector3> GetRandomKeyPosition()
         {
-            if(keyPositions.Count != 0){
+            if (keyPositions.Count != 0)
+            {
                 return keyPositions[UnityEngine.Random.Range(0, keyPositions.Count)];
             }
             return null;
         }
 
         void OnCollisionEnter(Collision collision)
-		{
-			if (collision.gameObject.tag == "Player") 
-			{
-				Vector3 hitDirection = collision.transform.position - transform.position;
-				hitDirection = hitDirection.normalized;	
-				collision.gameObject.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                Vector3 hitDirection = collision.transform.position - transform.position;
+                hitDirection = hitDirection.normalized;
+                collision.gameObject.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
                 gameManager.AddDamage ();
-			}
-		}
+            }
+        }
+
+        void OnDestroy()
+        {
+            Vector3 offset = new Vector3(transform.position.x, 0.15f, transform.position.z);
+            Instantiate(DeadSoul, offset, Quaternion.Euler(0f, 180f, 0f));
+        }
     }
 }

@@ -1,52 +1,28 @@
 fileFormatVersion: 2
-guid: 2a325778c8ce84ad3893f4874c1c8fb6
+guid: a8569b7a78e244c1a85f0b746bedf5ca
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Armature
-    100002: Body
-    100004: Bone
-    100006: Bone_end
+    100002: Bone
+    100004: Bone_end
+    100006: //RootNode
     100008: Eyes
-    100010: //RootNode
-    100012: Armature.001
-    100014: Solid.000
-    100016: Solid.003
-    100018: Solid.001
-    100020: Solid.005
-    100022: Armature.002
+    100010: Sphere
     400000: Armature
-    400002: Body
-    400004: Bone
-    400006: Bone_end
+    400002: Bone
+    400004: Bone_end
+    400006: //RootNode
     400008: Eyes
-    400010: //RootNode
-    400012: Armature.001
-    400014: Solid.000
-    400016: Solid.003
-    400018: Solid.001
-    400020: Solid.005
-    400022: Armature.002
+    400010: Sphere
     2100000: Material.001
     2100002: Material.002
-    2300000: Solid.001
-    2300002: Solid.005
-    3300000: Solid.001
-    3300002: Solid.005
-    4300000: Body
+    4300000: Sphere
     4300002: Eyes
-    4300004: Solid.003
-    4300006: Solid.000
-    4300008: Solid.001
-    4300010: Solid.005
     7400000: Idle
     9500000: //RootNode
-    13700000: Body
-    13700002: Eyes
-    13700004: Solid.000
-    13700006: Solid.003
-    13700008: Solid.001
-    13700010: Solid.005
+    13700000: Eyes
+    13700002: Sphere
   externalObjects: {}
   materials:
     importMaterials: 0
