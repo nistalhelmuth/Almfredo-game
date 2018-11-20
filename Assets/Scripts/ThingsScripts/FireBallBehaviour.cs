@@ -10,10 +10,13 @@ public class FireBallBehaviour : MonoBehaviour
 
     public Shooter WhoShoots;
 
+    private GameManager gameManager;
+
     void Start()
     {
-        GetComponent<Rigidbody>().velocity = transform.forward * 5.0f;
+        GetComponent<Rigidbody>().velocity = transform.forward * 8.0f;
         Destroy(gameObject, 3.0f);
+        gameManager = FindObjectOfType<GameManager> ();
     }
 
     void OnTriggerEnter(Collider collider)
@@ -32,13 +35,16 @@ public class FireBallBehaviour : MonoBehaviour
                 Vector3 hitDirection = collider.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
                 obj.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
+                gameManager.AddDamage ();
             }
 
             break;
         case Shooter.Player:
             if (obj.tag == "Enemy")
             {
+                
                 Destroy(obj);
+                gameManager.AddSouls();
             }
             break;
         }

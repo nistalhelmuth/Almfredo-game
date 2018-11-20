@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 95750889017046494}
   - component: {fileID: 54049027803126272}
   - component: {fileID: 136714732877619594}
-  - component: {fileID: 114051905926446970}
   m_Layer: 0
   m_Name: FlameSoulPrefab
   m_TagString: Enemy
@@ -295,17 +294,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114051905926446970
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401919504285360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b83e793915ded460d8ad4c766b47e692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &136714732877619594
 CapsuleCollider:
   m_ObjectHideFlags: 1
