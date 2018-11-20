@@ -9,6 +9,7 @@ namespace Enemies
     public class Enemy: MonoBehaviour
     {
         public int Life;
+        public float PlayerDistance;
 
         protected GameObject playerToFollow;
         protected NavMeshAgent navAgent;

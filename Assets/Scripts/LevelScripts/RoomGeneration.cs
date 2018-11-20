@@ -79,7 +79,7 @@ public class RoomGeneration : MonoBehaviour
 
         for (int i = 0; i < enemycount; i++)
         {
-            int randomEnemy = Random.Range(0, enemies.Length - 1);
+            int randomEnemy = Random.Range(0, enemies.Length);
             Vector3 randomPosition = RandomPosition();
             GameObject instance = Instantiate(enemies[randomEnemy], randomPosition, Quaternion.identity);
             instance.transform.parent = this.transform;

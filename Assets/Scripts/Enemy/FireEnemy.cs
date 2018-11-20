@@ -5,7 +5,6 @@ namespace Enemies
 {
     public class FireEnemy: Enemy
     {
-        public float PlayerDistance;
         public GameObject Fireball;
 
         private int nextShotTime;

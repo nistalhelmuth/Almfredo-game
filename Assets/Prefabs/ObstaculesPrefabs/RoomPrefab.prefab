@@ -313,6 +313,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   enemies:
   - {fileID: 1637327547547530, guid: ec79d9f0411064ff3904cfdc1ce0c62d, type: 2}
+  - {fileID: 1103911068773742, guid: 4623d3515d6d84ebbb4b06d5c7d6b2f2, type: 2}
   chair: {fileID: 1339455043201752, guid: 7a2382c86ff2c41d4a838cf25956f294, type: 2}
   shelf: {fileID: 1370434258479364, guid: 8ddcda873ed304fa2941b5eaa8bae049, type: 2}
   table: {fileID: 1374310517524138, guid: 5080b10a3c12b483ab6cc28754530566, type: 2}
