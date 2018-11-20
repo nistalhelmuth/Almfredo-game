@@ -23,10 +23,15 @@ namespace Player
 
         public override void TheListener()
         {
-
-
-            if (Input.GetKeyDown("space"))
+            // Cambio de direccion del jugador
+            if (Input.GetAxis(Player.HorizontalViewAxis) != 0 || Input.GetAxis(Player.VerticalViewAxis) != 0)
             {
+                Player.transform.forward = Vector3.Lerp(Player.transform.forward, Player.Mdirection, 0.5f);
+            }
+
+            if ((Input.GetButtonDown("Attack") || Input.GetAxis("Attack") > 0) && !Player.TriggerPressed)
+            {
+                Player.TriggerPressed = true;
                 if (Player.playerState == -1) //no tiene poderes
                 {
                     this.Player.Anim.SetTrigger("Eating");
@@ -51,8 +56,9 @@ namespace Player
         {
             powerCounter -= Player.playerDeltaTime;
 
-            Player.powerBar.sizeDelta = new Vector2(powerCounter*100.0f / 5.0f , Player.powerBar.sizeDelta.y);
-            if (powerCounter < 0) {
+            Player.powerBar.sizeDelta = new Vector2(powerCounter * 100.0f / 5.0f, Player.powerBar.sizeDelta.y);
+            if (powerCounter < 0)
+            {
                 Player.playerState = -1;
                 Player.ActionHandler -= powerTimer;
                 Player.powerCanvas.SetActive(false);

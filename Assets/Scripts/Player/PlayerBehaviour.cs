@@ -11,7 +11,7 @@ namespace Player
             set;
             get;
         }
-        public int playerState 
+        public int playerState
         {
             set;
             get;
@@ -35,6 +35,8 @@ namespace Player
         public StateDelegate PhysicsHandler;
         public string HorizontalAxis = "Horizontal";
         public string VerticalAxis = "Vertical";
+        public string HorizontalViewAxis = "HorizontalView";
+        public string VerticalViewAxis = "VerticalView";
         public GameObject fireBallPrefab;
         public RectTransform powerBar;
         public GameObject powerCanvas;
@@ -43,9 +45,15 @@ namespace Player
         private float flashCounter;
 
         public Rigidbody body;
-        
+
         public Renderer playerRender;
         public bool eating;
+
+        public bool TriggerPressed
+        {
+            get;
+            set;
+        }
 
         void Start ()
         {
@@ -53,14 +61,19 @@ namespace Player
             Anim = GetComponent<Animator>();
             powerCanvas.SetActive(false);
             playerState = -1; //no tiene poderes
-            eating=false;
+            eating = false;
+            TriggerPressed = false;
             new IdleState(this);
         }
 
         void Update ()
         {
-            Mdirection = new Vector3(Input.GetAxis(HorizontalAxis), 0f, Input.GetAxis(VerticalAxis));
+            Mdirection = new Vector3(Input.GetAxis(HorizontalViewAxis), 0f, Input.GetAxis(VerticalViewAxis));
             playerDeltaTime = Time.deltaTime;
+            if (Input.GetAxis("Attack") == 0 || Input.GetButtonUp("Attack"))
+            {
+                TriggerPressed = false;
+            }
             ActionHandler();
         }
 
@@ -70,13 +83,13 @@ namespace Player
             {
                 PhysicsHandler();
             };
-            
+
         }
 
         public void takeDmg(Vector3 _hitDirection)
         {
             if (invicibilityCounter <= 0 && !eating)
-            {    
+            {
                 MusicSource.PlayOneShot(hurtSound, 1F);
                 body.velocity = Vector3.zero;
                 body.AddForce(_hitDirection * 3f, ForceMode.VelocityChange);
@@ -94,13 +107,13 @@ namespace Player
             {
                 invicibilityCounter -= Time.deltaTime;
                 flashCounter -= Time.deltaTime;
-                if (flashCounter <= 0) 
+                if (flashCounter <= 0)
                 {
                     playerRender.enabled = !playerRender.enabled;
                     flashCounter = 0.1f;
                 }
-            } 
-            else 
+            }
+            else
             {
                 playerRender.enabled = true;
                 PhysicsHandler -= HurtAction;

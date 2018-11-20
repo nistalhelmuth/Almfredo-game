@@ -27,9 +27,17 @@ namespace Player
 
         public void Walking()
         {
-            Player.transform.forward = Vector3.Lerp(Player.transform.forward, Player.Mdirection, 0.5f);
             //Player.transform.rotation = Quaternion.LookRotation(Player.Mdirection, Vector3.up);
-            Player.body.velocity = Player.Mdirection * Time.deltaTime * Player.speed;
+
+            Vector3 velocityVector = new Vector3(Input.GetAxis(Player.HorizontalAxis), 0f, Input.GetAxis(Player.VerticalAxis));
+
+            //Cambia la direccion del player solo cuando no hay input
+            //del eje que la maneja
+            if (Player.Mdirection.magnitude == 0)
+            {
+                Player.transform.forward = Vector3.Lerp(Player.transform.forward, velocityVector, 0.5f);
+            }
+            Player.body.velocity = velocityVector * Time.deltaTime * Player.speed;
         }
 
     }
