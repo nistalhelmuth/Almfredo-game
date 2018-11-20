@@ -70,7 +70,7 @@ namespace Player
                 Player.playerState = 0;
                 gameManager.AddSouls();
             }
-            else if (hit.transform.gameObject.name == "otherEnemy(Clone)")
+            else if (hit.transform.gameObject.name == "IceSoul(Clone)")
             {
                 MonoBehaviour.Destroy(hit.transform.gameObject);
                 Player.ActionHandler += powerTimer;
