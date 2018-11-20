@@ -119,5 +119,10 @@ namespace Player
                 PhysicsHandler -= HurtAction;
             }
         }
+
+        public void StartOtherCoroutine(IEnumerator coroutineMethod)
+        {
+            StartCoroutine(coroutineMethod);
+        }
     }
 }

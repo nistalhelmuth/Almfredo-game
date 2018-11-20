@@ -331,10 +331,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9f248911d024cb8a0c5a0ba3a824da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootSound: {fileID: 0}
+  hurtSound: {fileID: 0}
+  biteSound: {fileID: 0}
+  MusicSource: {fileID: 0}
   HorizontalAxis: Horizontal
   VerticalAxis: Vertical
+  HorizontalViewAxis: HorizontalView
+  VerticalViewAxis: VerticalView
   fireBallPrefab: {fileID: 1568770733036500, guid: 32c2f45243794499e96017ba509f1692,
     type: 2}
+  powerBar: {fileID: 0}
+  powerCanvas: {fileID: 0}
   speed: 300
   body: {fileID: 54575817785112270}
   playerRender: {fileID: 137864382100175940}

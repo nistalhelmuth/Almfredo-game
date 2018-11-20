@@ -11,6 +11,7 @@ namespace Player
             this.Player = player;
             Player.PhysicsHandler += Walking;
             Player.ActionHandler += TheListener;
+            Player.Anim.SetBool("Walking", true);
         }
 
         public override void TheListener()
@@ -21,6 +22,7 @@ namespace Player
             {
                 Player.ActionHandler -= TheListener;
                 Player.PhysicsHandler -= Walking;
+                Player.Anim.SetBool("Walking", false);
                 new IdleState(Player);
             }
         }
@@ -36,6 +38,19 @@ namespace Player
             if (Player.Mdirection.magnitude == 0)
             {
                 Player.transform.forward = Vector3.Lerp(Player.transform.forward, velocityVector, 0.5f);
+                Player.Anim.SetFloat("YMovement", 1f);
+            }
+            else
+            {
+                float diffAngle = Mathf.Acos(Vector3.Dot(Vector3.forward, Player.Mdirection));
+                if (Player.Mdirection.x != 0)
+                {
+                    diffAngle *=  (Player.Mdirection.x / Mathf.Abs(Player.Mdirection.x));
+                }
+                float xCoord = velocityVector.x * Mathf.Cos(diffAngle) - velocityVector.z * Mathf.Sin(diffAngle);
+                float yCoord = velocityVector.x * Mathf.Sin(diffAngle) + velocityVector.z * Mathf.Cos(diffAngle);
+                Player.Anim.SetFloat("YMovement", yCoord);
+                Player.Anim.SetFloat("XMovement", xCoord);
             }
             Player.body.velocity = velocityVector * Time.deltaTime * Player.speed;
         }

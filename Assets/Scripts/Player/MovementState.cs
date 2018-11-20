@@ -34,10 +34,11 @@ namespace Player
                 Player.TriggerPressed = true;
                 if (Player.playerState == -1) //no tiene poderes
                 {
-                    this.Player.Anim.SetTrigger("Eating");
                     rayCounter = 0.5f;
+                    Player.eating = true;
+                    this.Player.Anim.SetTrigger("Eating");
                     Player.MusicSource.PlayOneShot(Player.biteSound, 1F);
-                    Player.ActionHandler += EatAction;
+                    Player.StartOtherCoroutine(WaitAndEat());
                 }
                 else if (Player.playerState == 0) //poder de fuego
                 {
@@ -91,9 +92,14 @@ namespace Player
 
         }
 
+        IEnumerator WaitAndEat()
+        {
+            yield return new WaitForSeconds(0.1f);
+            Player.ActionHandler += EatAction;
+        }
+
         public void EatAction()
         {
-            Player.eating = true;
             Vector3 front = Player.transform.forward;
             Vector3 left = (Player.transform.forward * 1f - Player.transform.right * 0.5f).normalized;
             Vector3 right = (Player.transform.forward * 1f + Player.transform.right * 0.5f).normalized;
