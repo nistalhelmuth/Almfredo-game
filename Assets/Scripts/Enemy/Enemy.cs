@@ -18,6 +18,8 @@ namespace Enemies
         protected Animator anim;
         private GameManager gameManager;
 
+        private bool isQuitting = false;
+
         protected virtual void Start()
         {
             GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
@@ -57,10 +59,18 @@ namespace Enemies
             }
         }
 
+        void OnApplicationQuit()
+        {
+            isQuitting = true;
+        }
+
         void OnDestroy()
         {
-            Vector3 offset = new Vector3(transform.position.x, 0.15f, transform.position.z);
-            Instantiate(DeadSoul, offset, Quaternion.Euler(0f, 180f, 0f));
+            if (!isQuitting)
+            {
+                Vector3 offset = new Vector3(transform.position.x, 0.15f, transform.position.z);
+                Instantiate(DeadSoul, offset, Quaternion.Euler(0f, 180f, 0f));
+            }
         }
     }
 }

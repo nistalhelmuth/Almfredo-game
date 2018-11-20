@@ -13,6 +13,7 @@ namespace Player
         private RaycastHit hitFront, hitLeft, hitRight;
 
         private GameManager gameManager;
+        private GameObject proyectile;
 
         public MovementState(PlayerBehaviour player): base(player)
         {
@@ -42,8 +43,15 @@ namespace Player
                 }
                 else if (Player.playerState == 0) //poder de fuego
                 {
-                    Player.MusicSource.PlayOneShot(Player.shootSound, 1F);
-                    Player.ActionHandler += ShootAction;
+                    proyectile = Player.fireBallPrefab;
+                    Player.Anim.SetTrigger("Shoot");
+                    Player.StartOtherCoroutine(WaitAndShoot());
+                }
+                else if (Player.playerState == 1) //poder de fuego
+                {
+                    proyectile = Player.iceSpikePrefab;
+                    Player.Anim.SetTrigger("Shoot");
+                    Player.StartOtherCoroutine(WaitAndShoot());
                 }
             }
             else if (Input.GetKeyDown("enter"))
@@ -145,14 +153,21 @@ namespace Player
 
         public void ShootAction()
         {
+            Player.MusicSource.PlayOneShot(Player.shootSound, 1F);
             MonoBehaviour.Instantiate(
-                Player.fireBallPrefab,
+                proyectile,
                 Player.transform.position + Player.transform.forward * 0.6f,
                 Player.transform.rotation);
 
             //NetworkServer.Spawn(bullet);
 
             Player.ActionHandler -= ShootAction;
+        }
+
+        IEnumerator WaitAndShoot()
+        {
+            yield return new WaitForSeconds(0.2f);
+            Player.ActionHandler += ShootAction;
         }
 
     }
