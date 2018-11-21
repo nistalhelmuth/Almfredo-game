@@ -131,8 +131,9 @@ namespace Player
             {
                 return;
             }
-            if (invicibilityCounter < 0 && !eating)
+            if (invicibilityCounter <= 0 && !eating)
             {
+                Debug.Log("Bla");
                 invicibilityCounter = 1;
                 MusicSource.PlayOneShot(hurtSound, 1F);
                 body.velocity = Vector3.zero;
