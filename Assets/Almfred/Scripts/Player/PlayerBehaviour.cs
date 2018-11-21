@@ -34,6 +34,13 @@ namespace Player
             get;
             set;
         }
+
+        public Renderer BodyRenderer
+        {
+            get;
+            set;
+        }
+
         public delegate void StateDelegate();
         public StateDelegate ActionHandler;
         public StateDelegate PhysicsHandler;
@@ -50,8 +57,11 @@ namespace Player
         public RectTransform powerBar;
         public GameObject powerCanvas;
         public GameObject cameraPrefab;
-	    public GameObject playerCamera;
+        public GameObject playerCamera;
         public float speed;
+        public Material FireMaterial;
+        public Material IceMaterial;
+        public Material NeutralMaterial;
         private float invicibilityCounter;
         private float flashCounter;
         private GameManager gameManager;
@@ -62,8 +72,8 @@ namespace Player
         public bool eating;
         public bool isLocal;
         public Vector3 spawnPoint;
-        
-        /* 
+
+        /*
         void Start ()
         {
             body = GetComponent<Rigidbody>();
@@ -86,10 +96,11 @@ namespace Player
             powerBar = GameObject.Find("FrontBar").GetComponent<Image>().rectTransform;
             powerCanvas.SetActive(false);
             playerState = -1; //no tiene poderes
-            eating=false;
+            eating = false;
             TriggerPressed = false;
             spawnPoint = transform.position;
             gameManager = FindObjectOfType<GameManager> ();
+            BodyRenderer = transform.Find("Body").GetComponent<Renderer>();
             new IdleState(this);
         }
 

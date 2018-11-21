@@ -70,6 +70,7 @@ namespace Player
                 Player.playerState = -1;
                 Player.ActionHandler -= powerTimer;
                 Player.powerCanvas.SetActive(false);
+                Player.BodyRenderer.material = Player.NeutralMaterial;
             }
         }
 
@@ -82,6 +83,7 @@ namespace Player
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 0;
+                Player.BodyRenderer.material = Player.FireMaterial;
             }
             else if (hit.transform.gameObject.name == "IceSoul(Clone)")
             {
@@ -90,6 +92,7 @@ namespace Player
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
                 Player.playerState = 1;
+                Player.BodyRenderer.material = Player.IceMaterial;
             }
             else if (hit.transform.gameObject.name == "DeadSoul(Clone)")
             {

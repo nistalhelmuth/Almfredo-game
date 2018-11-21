@@ -615,10 +615,14 @@ MonoBehaviour:
     type: 2}
   playerCamera: {fileID: 0}
   speed: 300
+  FireMaterial: {fileID: 2100000, guid: 55469eee87118433782083a371a355a0, type: 2}
+  IceMaterial: {fileID: 2100000, guid: 14bba3a9d75f848458e9aba9dcf2b2ec, type: 2}
+  NeutralMaterial: {fileID: 2100000, guid: fa6cf9b5c641c402185bdeb27bb17f80, type: 2}
   body: {fileID: 54575817785112270}
   playerRender: {fileID: 137574592650338450}
   eating: 0
   isLocal: 0
+  spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &114748951395686798
 MonoBehaviour:
   m_ObjectHideFlags: 1
