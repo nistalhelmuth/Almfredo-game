@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Player;
+using UnityEngine.Networking;
 
 namespace Enemies
 {
-    public class Enemy: MonoBehaviour
+    public class Enemy: NetworkBehaviour
     {
         public int Life;
         public float PlayerDistance;
-        public GameObject DeadSoul;
-
+        //public GameObject DeadSoul;
         protected GameObject playerToFollow;
         protected NavMeshAgent navAgent;
         protected List<Vector3> keyPositions = new List<Vector3>();
@@ -66,11 +66,10 @@ namespace Enemies
 
         void OnDestroy()
         {
-            if (!isQuitting)
-            {
-                Vector3 offset = new Vector3(transform.position.x, 0.15f, transform.position.z);
-                Instantiate(DeadSoul, offset, Quaternion.Euler(0f, 180f, 0f));
-            }
+            /*
+            Vector3 offset = new Vector3(transform.position.x, 0.15f, transform.position.z);
+            Instantiate(DeadSoul, offset, Quaternion.Euler(0f, 180f, 0f));
+            */
         }
     }
 }

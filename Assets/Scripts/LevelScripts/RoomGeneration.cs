@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Enemies;
+using UnityEngine.Networking;
+using Player;
 
-public class RoomGeneration : MonoBehaviour
+public class RoomGeneration : NetworkBehaviour
 {
-
-
-    public Transform camera;
     public GameObject[] enemies;
     public GameObject chair;
     public GameObject shelf;
     public GameObject table;
-
     public GameObject mapRoom;
     public int type;
+    [SyncVar]
     public bool roomClear;
     private List <Vector3> gridPositions = new List <Vector3> ();
     private NavMeshSurface navSurface;
 
-    public int columns = 16;                                        //Number of columns in our game board.
-    public int rows = 8;
+    private int columns = 16;                                        //Number of columns in our game board.
+    private int rows = 8;
+    private Transform camera;
 
     void InitialiseList ()
     {
@@ -55,7 +55,7 @@ public class RoomGeneration : MonoBehaviour
         return randomPosition;
     }
 
-    void LayoutObjectAtRandom (GameObject objectType, int minimum, int maximum)
+    void CmdLayoutObjectAtRandom (GameObject objectType, int minimum, int maximum)
     {
         //Choose a random number of objects to instantiate within the minimum and maximum limits
         int objectCount = Random.Range (minimum, maximum + 1);
@@ -69,11 +69,12 @@ public class RoomGeneration : MonoBehaviour
             //Choose a random tile from tileArray and assign it to tileChoice
 
             //Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
-            Instantiate(objectType, randomPosition + objectType.transform.position, Quaternion.identity).transform.parent = this.transform;
+            GameObject thing= Instantiate(objectType, randomPosition + objectType.transform.position, Quaternion.identity, this.transform);
+            NetworkServer.Spawn(thing);
         }
     }
-
-    void LayoutEnemyAtRandom (int minimum, int maximum )
+    [Command]
+    void CmdLayoutEnemyAtRandom (int minimum, int maximum )
     {
         int enemycount = Random.Range(minimum, maximum + 1);
 
@@ -81,8 +82,8 @@ public class RoomGeneration : MonoBehaviour
         {
             int randomEnemy = Random.Range(0, enemies.Length);
             Vector3 randomPosition = RandomPosition();
-            GameObject instance = Instantiate(enemies[randomEnemy], randomPosition, Quaternion.identity);
-            instance.transform.parent = this.transform;
+            GameObject instance = Instantiate(enemies[randomEnemy], randomPosition, Quaternion.identity, this.transform);
+            NetworkServer.Spawn(instance);
             // Se le asigna varias posiciones de "escape" al enemigo instanciado
             for (int e = 0; e < 3; e++)
             {
@@ -91,9 +92,8 @@ public class RoomGeneration : MonoBehaviour
         }
     }
 
-    public void SetupScene (int _type, GameObject _mapRoom, Transform cameraprop)
+    public void SetupScene (int _type, GameObject _mapRoom)
     {
-        camera = cameraprop;
         mapRoom = _mapRoom;
         type = _type;
         switch (type)
@@ -104,16 +104,16 @@ public class RoomGeneration : MonoBehaviour
             //la unica opcion que esta ahorita es la de llenar el cuarto random
             roomClear = false;
             InitialiseList ();
-            LayoutObjectAtRandom (table, 3, 6);
-            LayoutObjectAtRandom (chair, 1, 3);
-            LayoutObjectAtRandom (shelf, 4, 6);
-
+            CmdLayoutObjectAtRandom (table, 3, 6);
+            CmdLayoutObjectAtRandom (chair, 1, 3);
+            CmdLayoutObjectAtRandom (shelf, 4, 6);
             break;
         case 1: //cuarto de start
             mapRoom.SetActive(true);
+            roomClear=true;
             break;
         case 2: //ultimo cuarto
-
+            roomClear=true;
             break;
         }
     }
@@ -122,16 +122,21 @@ public class RoomGeneration : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Vector3 dif = new Vector3(transform.position.x - camera.position.x, 0f, transform.position.z - camera.position.z);
-            if (type == 0 && !roomClear)
+            PlayerBehaviour player = collision.gameObject.GetComponent<PlayerBehaviour>();
+            if (player.isLocal)
             {
-                NavMeshSurface navSurface = transform.Find("NavMesh").GetComponent<NavMeshSurface>();
-                navSurface.BuildNavMesh();
-                LayoutEnemyAtRandom (2, 5);
-                roomClear = true;
+                camera = player.playerCamera.transform;
+                Vector3 dif = new Vector3(transform.position.x - camera.position.x, 0f, transform.position.z - camera.position.z);
+                if (!roomClear)
+                {
+                    NavMeshSurface navSurface = transform.Find("NavMesh").GetComponent<NavMeshSurface>();
+                    navSurface.BuildNavMesh();
+                    CmdLayoutEnemyAtRandom (2, 5);
+                    roomClear = true;
+                }
+                camera.Translate(dif);
+                //mapRoom.SetActive(true);
             }
-            camera.Translate(dif);
-            mapRoom.SetActive(true);
         }
     }
 

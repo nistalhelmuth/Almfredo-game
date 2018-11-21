@@ -37,6 +37,8 @@ GameObject:
   - component: {fileID: 33864722449555448}
   - component: {fileID: 65297957192590270}
   - component: {fileID: 208792553290363860}
+  - component: {fileID: 114074077181621332}
+  - component: {fileID: 114276123523281220}
   m_Layer: 0
   m_Name: EstantePrefab
   m_TagString: Obstacle
@@ -309,6 +311,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.483686, z: 1}
   m_Center: {x: 0, y: 0.83, z: 0}
+--- !u!114 &114074077181621332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370434258479364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 141
+    i1: 220
+    i2: 218
+    i3: 135
+    i4: 62
+    i5: 211
+    i6: 4
+    i7: 250
+    i8: 41
+    i9: 65
+    i10: 181
+    i11: 234
+    i12: 168
+    i13: 186
+    i14: 224
+    i15: 73
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114276123523281220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370434258479364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0
+  m_SyncRotationAxis: 0
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!208 &208792553290363860
 NavMeshObstacle:
   m_ObjectHideFlags: 1

@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.Networking.Match;
 
-public class LevelGeneration : MonoBehaviour {
+public class LevelGeneration : NetworkBehaviour {
 
 	public class Room {
 		public Vector2 gridPos;
@@ -17,22 +19,26 @@ public class LevelGeneration : MonoBehaviour {
 		}
 	}
 
-	private Room[,] rooms;
 	List<Vector2> takenPositions = new List<Vector2>();
 	public int width, height, numberOfRooms;
 	public GameObject roomObject;
 	public GameObject[] doorObject;
 	public GameObject[] roomWhiteObj;
 	public Transform mapRoot;
-
-	public Transform camera;
+	private Transform camera;
+	private Room[,] rooms;
 	// Use this for initialization
 	void Start () {
+		
+	}
+
+	public override void OnStartServer()
+	{
 		CreateRooms();
 		SetRoomDoors();
 		SetRoomTypes();
-		DrawMap();
-		InstantiateRooms();
+		CmdDrawMap();
+		CmdInstantiateRooms();
 	}
 	
 void CreateRooms(){
@@ -169,40 +175,35 @@ void CreateRooms(){
 		rooms[(int)takenPositions[index2].x+width,(int)takenPositions[index2].y+height].type = 2; 
 	}
 
-	void DrawMap() {
+	void CmdDrawMap() {
 		foreach(Room room in rooms){
 			if(room != null){
 				Vector2 drawPos = room.gridPos;
 				drawPos.x *= 16;//aspect ratio of map sprite
 				drawPos.y *= 12;
-
-				
-
 				switch (room.type)
-			{
+				{
 					case 0:
-						room.mapRoom = Instantiate(roomWhiteObj[0], drawPos, Quaternion.identity);
-						room.mapRoom.transform.parent = mapRoot;
-						room.mapRoom.SetActive(false);
+						room.mapRoom = Instantiate(roomWhiteObj[0], drawPos, Quaternion.identity, mapRoot);
+						NetworkServer.Spawn(room.mapRoom);
+						//room.mapRoom.SetActive(false);
 						break;
 					case 1:
-						room.mapRoom = Instantiate(roomWhiteObj[1], drawPos, Quaternion.identity);
-						room.mapRoom.transform.parent = mapRoot;
-						room.mapRoom.SetActive(false);
+						room.mapRoom = Instantiate(roomWhiteObj[1], drawPos, Quaternion.identity, mapRoot);
+						NetworkServer.Spawn(room.mapRoom);
+						//room.mapRoom.SetActive(false);
 						break;
 					case 2:
-						room.mapRoom = Instantiate(roomWhiteObj[2], drawPos, Quaternion.identity);
-						room.mapRoom.transform.parent = mapRoot;
-						room.mapRoom.SetActive(false);
+						room.mapRoom = Instantiate(roomWhiteObj[2], drawPos, Quaternion.identity, mapRoot);
+						NetworkServer.Spawn(room.mapRoom);
+						//room.mapRoom.SetActive(false);
 						break;		
-			}
-				
-				
+				}	
 			}
 		}
 	}
 
-	void InstantiateRooms(){
+	void CmdInstantiateRooms(){
 		Vector2 position;
 		Vector3 drawPos;
 		GameObject roomCreated;
@@ -210,22 +211,28 @@ void CreateRooms(){
 			Room roomToCreate = rooms[(int)takenPositions[i].x+width,(int)takenPositions[i].y+height];
 			position = roomToCreate.gridPos;
 			drawPos = new Vector3(position.x*21.25f,0f,position.y*12.75f);
-			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity);
-			roomCreated.transform.parent = transform;
-			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene(roomToCreate.type, roomToCreate.mapRoom, camera);
-			if(!roomToCreate.doorTop){
-				Instantiate(doorObject[0], drawPos+Vector3.forward * 5.3f, Quaternion.identity, roomCreated.transform);
+			roomCreated = Instantiate(roomObject, drawPos, Quaternion.identity, transform);
+			NetworkServer.Spawn(roomCreated);
+			roomCreated.gameObject.GetComponent<RoomGeneration>().SetupScene(roomToCreate.type, roomToCreate.mapRoom);
+			if(!roomToCreate.doorTop)
+			{
+				GameObject topDoor = Instantiate(doorObject[0], drawPos+Vector3.forward * 5.3f, Quaternion.identity, roomCreated.transform);
+				NetworkServer.Spawn(topDoor);
 			}
-			
-			if(!roomToCreate.doorRight){
-				Instantiate(doorObject[1], drawPos+Vector3.right * 9.37f, Quaternion.identity, roomCreated.transform); 
+			if(!roomToCreate.doorRight)
+			{
+				GameObject rightDoor = Instantiate(doorObject[1], drawPos+Vector3.right * 9.37f, Quaternion.identity, roomCreated.transform); 
+				NetworkServer.Spawn(rightDoor);
 			}
-			
-			if(!roomToCreate.doorBot){
-				Instantiate(doorObject[2], drawPos+Vector3.back * 5.3f, Quaternion.identity, roomCreated.transform);
+			if(!roomToCreate.doorBot)
+			{
+				GameObject botDoor = Instantiate(doorObject[2], drawPos+Vector3.back * 5.3f, Quaternion.identity, roomCreated.transform);
+				NetworkServer.Spawn(botDoor);
 			}
-			if(!roomToCreate.doorLeft){
-				Instantiate(doorObject[3], drawPos+Vector3.left * 9.37f, Quaternion.identity, roomCreated.transform);
+			if(!roomToCreate.doorLeft)
+			{
+				GameObject leftDoor = Instantiate(doorObject[3], drawPos+Vector3.left * 9.37f, Quaternion.identity, roomCreated.transform);
+				NetworkServer.Spawn(leftDoor);
 			}
 			 
 		}

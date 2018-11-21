@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using UnityEngine.Networking;
 
 
-public class FireBallBehaviour : MonoBehaviour
+public class FireBallBehaviour : NetworkBehaviour
 {
     public enum Shooter {Player, Enemy};
 
     public Shooter WhoShoots;
 
     private GameManager gameManager;
+    public GameObject DeadSoul;
 
     void Start()
     {
@@ -19,6 +21,12 @@ public class FireBallBehaviour : MonoBehaviour
         gameManager = FindObjectOfType<GameManager> ();
     }
 
+    [Command]
+    void CmdOnDestroy(Vector3 position)
+    {
+        GameObject deadSoul = Instantiate(DeadSoul, position, Quaternion.Euler(0f, 180f, 0f));
+        NetworkServer.Spawn(deadSoul);
+    }
     void OnTriggerEnter(Collider collider)
     {
         GameObject obj = collider.gameObject;
@@ -42,7 +50,7 @@ public class FireBallBehaviour : MonoBehaviour
         case Shooter.Player:
             if (obj.tag == "Enemy")
             {
-                
+                CmdOnDestroy(obj.transform.position);
                 Destroy(obj);
                 Destroy(gameObject);
                 gameManager.AddSouls();

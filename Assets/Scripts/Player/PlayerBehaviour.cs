@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
 namespace Player
 {
-    public class PlayerBehaviour : MonoBehaviour
+    public class PlayerBehaviour : NetworkBehaviour
     {
         public Animator Anim
         {
@@ -26,13 +28,19 @@ namespace Player
             set;
             get;
         }
+
+        public bool TriggerPressed
+        {
+            get;
+            set;
+        }
         public delegate void StateDelegate();
+        public StateDelegate ActionHandler;
+        public StateDelegate PhysicsHandler;
         public AudioClip shootSound;
         public AudioClip hurtSound;
         public AudioClip biteSound;
         public AudioSource MusicSource;
-        public StateDelegate ActionHandler;
-        public StateDelegate PhysicsHandler;
         public string HorizontalAxis = "Horizontal";
         public string VerticalAxis = "Vertical";
         public string HorizontalViewAxis = "HorizontalView";
@@ -41,6 +49,8 @@ namespace Player
         public GameObject iceSpikePrefab;
         public RectTransform powerBar;
         public GameObject powerCanvas;
+        public GameObject cameraPrefab;
+	    public GameObject playerCamera;
         public float speed;
         private float invicibilityCounter;
         private float flashCounter;
@@ -49,13 +59,10 @@ namespace Player
 
         public Renderer playerRender;
         public bool eating;
+        public bool isLocal;
 
-        public bool TriggerPressed
-        {
-            get;
-            set;
-        }
-
+        
+        /* 
         void Start ()
         {
             body = GetComponent<Rigidbody>();
@@ -65,10 +72,30 @@ namespace Player
             eating = false;
             TriggerPressed = false;
             new IdleState(this);
+        }*/
+
+        public override void OnStartLocalPlayer()
+        {
+            playerCamera = Instantiate(cameraPrefab, Vector3.zero, Quaternion.identity);
+            isLocal = true;
+            body = GetComponent<Rigidbody>();
+            Anim = GetComponent<Animator>();
+            MusicSource = playerCamera.GetComponent<AudioSource>();
+            powerCanvas = GameObject.Find("BarCanvas");
+            powerBar = GameObject.Find("FrontBar").GetComponent<Image>().rectTransform;
+            powerCanvas.SetActive(false);
+            playerState = -1; //no tiene poderes
+            eating=false;
+            TriggerPressed = false;
+            new IdleState(this);
         }
 
         void Update ()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
             Mdirection = new Vector3(Input.GetAxis(HorizontalViewAxis), 0f, Input.GetAxis(VerticalViewAxis));
             playerDeltaTime = Time.deltaTime;
             if (Input.GetAxis("Attack") == 0 || Input.GetButtonUp("Attack"))
@@ -80,6 +107,10 @@ namespace Player
 
         void FixedUpdate()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
             if (PhysicsHandler != null)
             {
                 PhysicsHandler();
@@ -89,6 +120,10 @@ namespace Player
 
         public void takeDmg(Vector3 _hitDirection)
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
             if (invicibilityCounter <= 0 && !eating)
             {
                 MusicSource.PlayOneShot(hurtSound, 1F);

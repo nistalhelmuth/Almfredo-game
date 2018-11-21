@@ -71,6 +71,8 @@ GameObject:
   - component: {fileID: 33163354037888686}
   - component: {fileID: 136061359946544066}
   - component: {fileID: 208352206286925354}
+  - component: {fileID: 114281156315006526}
+  - component: {fileID: 114040577104878076}
   m_Layer: 0
   m_Name: MesaPrefab
   m_TagString: Obstacle
@@ -370,6 +372,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1445088749005156}
   m_Mesh: {fileID: 4300004, guid: aef5b925f19ac49668605fb156747a69, type: 3}
+--- !u!114 &114040577104878076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374310517524138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0
+  m_SyncRotationAxis: 0
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114281156315006526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374310517524138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 80
+    i1: 128
+    i2: 177
+    i3: 10
+    i4: 60
+    i5: 18
+    i6: 180
+    i7: 131
+    i8: 171
+    i9: 108
+    i10: 194
+    i11: 135
+    i12: 84
+    i13: 83
+    i14: 5
+    i15: 102
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!136 &136061359946544066
 CapsuleCollider:
   m_ObjectHideFlags: 1

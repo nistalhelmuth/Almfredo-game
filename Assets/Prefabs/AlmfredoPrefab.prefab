@@ -115,6 +115,8 @@ GameObject:
   - component: {fileID: 54575817785112270}
   - component: {fileID: 114361670394238218}
   - component: {fileID: 136582910594468942}
+  - component: {fileID: 114024141296744648}
+  - component: {fileID: 114748951395686798}
   m_Layer: 9
   m_Name: AlmfredoPrefab
   m_TagString: Player
@@ -552,6 +554,38 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114024141296744648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211834685530622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 6
+    i1: 179
+    i2: 142
+    i3: 223
+    i4: 223
+    i5: 135
+    i6: 148
+    i7: 235
+    i8: 168
+    i9: 189
+    i10: 4
+    i11: 160
+    i12: 163
+    i13: 245
+    i14: 1
+    i15: 32
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114361670394238218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -577,10 +611,35 @@ MonoBehaviour:
     type: 2}
   powerBar: {fileID: 0}
   powerCanvas: {fileID: 0}
+  cameraPrefab: {fileID: 1982652182228770, guid: cfede71d273444b63ba8231c76ae6023,
+    type: 2}
+  playerCamera: {fileID: 0}
   speed: 300
   body: {fileID: 54575817785112270}
   playerRender: {fileID: 137574592650338450}
   eating: 0
+  isLocal: 0
+--- !u!114 &114748951395686798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211834685530622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 5
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!136 &136582910594468942
 CapsuleCollider:
   m_ObjectHideFlags: 1

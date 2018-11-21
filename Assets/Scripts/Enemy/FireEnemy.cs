@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace Enemies
 {
@@ -40,9 +41,16 @@ namespace Enemies
             yield return new WaitForSeconds(nextShotTime);
             anim.SetTrigger("Shoot");
             yield return new WaitForSeconds(0.4f);
-            Instantiate(Fireball, transform.position + transform.forward * 0.4f, transform.rotation);
+            CmdShootEnemy();
             nextShotTime = Random.Range(2,5);
             StartCoroutine("Shoot");
+        }
+
+        [Command]
+        public void CmdShootEnemy()
+        {
+            GameObject fireBall = Instantiate(Fireball, transform.position + transform.forward * 0.4f, transform.rotation);
+            NetworkServer.Spawn(fireBall);
         }
     }
 }

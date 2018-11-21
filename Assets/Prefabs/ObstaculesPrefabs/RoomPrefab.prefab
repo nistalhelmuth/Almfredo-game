@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 65904864288753128}
   - component: {fileID: 65476143902285822}
   - component: {fileID: 65143724771887342}
+  - component: {fileID: 114391874824110946}
+  - component: {fileID: 114157146702855476}
   m_Layer: 0
   m_Name: RoomPrefab
   m_TagString: Untagged
@@ -310,7 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f65cb8443d34f01a00be9e61834919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
   enemies:
   - {fileID: 1637327547547530, guid: ec79d9f0411064ff3904cfdc1ce0c62d, type: 2}
   - {fileID: 1103911068773742, guid: 4623d3515d6d84ebbb4b06d5c7d6b2f2, type: 2}
@@ -320,8 +321,59 @@ MonoBehaviour:
   mapRoom: {fileID: 0}
   type: 0
   roomClear: 0
-  columns: 16
-  rows: 8
+--- !u!114 &114157146702855476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422529205087220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0
+  m_SyncRotationAxis: 0
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114391874824110946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422529205087220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 152
+    i1: 198
+    i2: 75
+    i3: 116
+    i4: 92
+    i5: 86
+    i6: 20
+    i7: 153
+    i8: 56
+    i9: 194
+    i10: 146
+    i11: 244
+    i12: 47
+    i13: 14
+    i14: 235
+    i15: 241
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114879878948440816
 MonoBehaviour:
   m_ObjectHideFlags: 1

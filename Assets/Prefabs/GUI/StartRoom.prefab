@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4807748458187804}
   - component: {fileID: 212170797652882306}
+  - component: {fileID: 114649304685058346}
+  - component: {fileID: 114622465668169456}
   m_Layer: 5
   m_Name: StartRoom
   m_TagString: Untagged
@@ -40,6 +42,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114622465668169456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644002369955506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 1
+  m_SyncRotationAxis: 0
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114649304685058346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644002369955506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 29
+    i1: 47
+    i2: 106
+    i3: 116
+    i4: 81
+    i5: 33
+    i6: 116
+    i7: 219
+    i8: 201
+    i9: 129
+    i10: 16
+    i11: 10
+    i12: 129
+    i13: 220
+    i14: 227
+    i15: 164
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!212 &212170797652882306
 SpriteRenderer:
   m_ObjectHideFlags: 1

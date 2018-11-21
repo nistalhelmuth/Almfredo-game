@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 136949316146695986}
   - component: {fileID: 195676704269948302}
   - component: {fileID: 114974606609952162}
+  - component: {fileID: 114988854100437074}
+  - component: {fileID: 114083787414751782}
   m_Layer: 0
   m_Name: IceSoul
   m_TagString: Enemy
@@ -255,6 +257,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114083787414751782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103911068773742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 5
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114974606609952162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,7 +291,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 3
   PlayerDistance: 4
-  DeadSoul: {fileID: 1627176123297076, guid: 143abcc4dc0424cdaa7452550bb9d8b2, type: 2}
+--- !u!114 &114988854100437074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103911068773742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 70
+    i1: 35
+    i2: 211
+    i3: 81
+    i4: 93
+    i5: 109
+    i6: 132
+    i7: 235
+    i8: 187
+    i9: 75
+    i10: 6
+    i11: 213
+    i12: 199
+    i13: 214
+    i14: 178
+    i15: 242
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!136 &136949316146695986
 CapsuleCollider:
   m_ObjectHideFlags: 1

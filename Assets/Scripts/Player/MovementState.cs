@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace Player
 {
@@ -7,11 +8,9 @@ namespace Player
     {
 
         private float rayCounter;
-
         private float powerLength;
         private float powerCounter;
         private RaycastHit hitFront, hitLeft, hitRight;
-
         private GameManager gameManager;
         private GameObject proyectile;
 
@@ -90,7 +89,7 @@ namespace Player
                 Player.ActionHandler += powerTimer;
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
-                Player.playerState = 1;
+                Player.playerState = 0;
             }
             else if (hit.transform.gameObject.name == "DeadSoul(Clone)")
             {
@@ -151,23 +150,24 @@ namespace Player
             }
         }
 
-        public void ShootAction()
+        [Command]
+        public void CmdShootAction()
         {
             Player.MusicSource.PlayOneShot(Player.shootSound, 1F);
-            MonoBehaviour.Instantiate(
-                proyectile,
+            GameObject fireBall = MonoBehaviour.Instantiate(
+                Player.fireBallPrefab,
                 Player.transform.position + Player.transform.forward * 0.6f,
                 Player.transform.rotation);
 
-            //NetworkServer.Spawn(bullet);
+            NetworkServer.Spawn(fireBall);
 
-            Player.ActionHandler -= ShootAction;
+            Player.ActionHandler -= CmdShootAction;
         }
 
         IEnumerator WaitAndShoot()
         {
             yield return new WaitForSeconds(0.2f);
-            Player.ActionHandler += ShootAction;
+            Player.ActionHandler += CmdShootAction;
         }
 
     }
