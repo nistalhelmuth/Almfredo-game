@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b0c057c1372d4fe29f4522e23b5c448
+guid: 12834c20f7c764622b2d70bb667c2575
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Devinne Swash Shadow
+  fontName: Devinne Swash
   fontNames:
-  - Devinne Swash Shadow
+  - Devinne Swash
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

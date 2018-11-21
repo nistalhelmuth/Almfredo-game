@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MenuUI
-  m_Shader: {fileID: 4800000, guid: c746b6ab3d997469db4a17953613e080, type: 3}
+  m_Shader: {fileID: 4800000, guid: 2e7992606c18b411c92839f052be06b4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
