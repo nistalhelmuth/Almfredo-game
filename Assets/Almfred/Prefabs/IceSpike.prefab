@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WhoShoots: 0
-  DeadSoul: {fileID: 0}
+  DeadSoul: {fileID: 1627176123297076, guid: 143abcc4dc0424cdaa7452550bb9d8b2, type: 2}
 --- !u!136 &136479171442359744
 CapsuleCollider:
   m_ObjectHideFlags: 1

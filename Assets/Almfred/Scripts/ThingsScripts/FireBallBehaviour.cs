@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Enemies;
 using UnityEngine.Networking;
 
 
@@ -50,10 +51,14 @@ public class FireBallBehaviour : NetworkBehaviour
         case Shooter.Player:
             if (obj.tag == "Enemy")
             {
-                CmdOnDestroy(obj.transform.position);
-                Destroy(obj);
+                int life = obj.GetComponent<Enemy>().TakeDamage();
+                if (life == 0)
+                {
+                    CmdOnDestroy(obj.transform.position);
+                    Destroy(obj);
+                    gameManager.AddSouls();
+                }
                 Destroy(gameObject);
-                gameManager.AddSouls();
             }
             break;
         }

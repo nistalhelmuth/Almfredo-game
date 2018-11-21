@@ -64,6 +64,12 @@ namespace Enemies
             isQuitting = true;
         }
 
+        public int TakeDamage()
+        {
+            Life -= 1;
+            return Life;
+        }
+
         void OnDestroy()
         {
             /*
