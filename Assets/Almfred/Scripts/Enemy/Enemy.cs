@@ -16,7 +16,6 @@ namespace Enemies
         protected NavMeshAgent navAgent;
         protected List<Vector3> keyPositions = new List<Vector3>();
         protected Animator anim;
-        private GameManager gameManager;
 
         private bool isQuitting = false;
 
@@ -26,7 +25,6 @@ namespace Enemies
             playerToFollow = allPlayers[UnityEngine.Random.Range(0, allPlayers.Length - 1)];
             navAgent = GetComponent<NavMeshAgent>();
             anim = GetComponent<Animator>();
-            gameManager = FindObjectOfType<GameManager> ();
         }
 
         protected virtual void Update()
@@ -55,7 +53,6 @@ namespace Enemies
                 Vector3 hitDirection = collision.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
                 collision.gameObject.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
-                gameManager.AddDamage (collision.gameObject);
             }
         }
 

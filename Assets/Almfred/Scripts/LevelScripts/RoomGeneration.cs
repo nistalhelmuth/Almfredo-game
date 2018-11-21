@@ -85,7 +85,8 @@ public class RoomGeneration : NetworkBehaviour
             GameObject instance = Instantiate(enemies[randomEnemy], randomPosition, Quaternion.identity, this.transform);
             NetworkServer.Spawn(instance);
             // Se le asigna varias posiciones de "escape" al enemigo instanciado
-            for (int e = 0; e < 3; e++)
+            instance.GetComponent<Enemy>().AddKeyPosition(randomPosition);
+            for (int e = 0; e < 2; e++)
             {
                 instance.GetComponent<Enemy>().AddKeyPosition(RandomPosition());
             }
@@ -104,9 +105,9 @@ public class RoomGeneration : NetworkBehaviour
             //la unica opcion que esta ahorita es la de llenar el cuarto random
             roomClear = false;
             InitialiseList ();
-            CmdLayoutObjectAtRandom (table, 3, 6);
-            CmdLayoutObjectAtRandom (chair, 1, 3);
-            CmdLayoutObjectAtRandom (shelf, 4, 6);
+            CmdLayoutObjectAtRandom (table, 3, 7);
+            CmdLayoutObjectAtRandom (chair, 1, 4);
+            CmdLayoutObjectAtRandom (shelf, 4, 7);
             break;
         case 1: //cuarto de start
             mapRoom.SetActive(true);
@@ -131,7 +132,7 @@ public class RoomGeneration : NetworkBehaviour
                 {
                     NavMeshSurface navSurface = transform.Find("NavMesh").GetComponent<NavMeshSurface>();
                     navSurface.BuildNavMesh();
-                    CmdLayoutEnemyAtRandom (2, 5);
+                    CmdLayoutEnemyAtRandom (4, 9);
                     roomClear = true;
                 }
                 camera.Translate(dif);

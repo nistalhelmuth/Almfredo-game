@@ -54,6 +54,7 @@ namespace Player
         public float speed;
         private float invicibilityCounter;
         private float flashCounter;
+        private GameManager gameManager;
 
         public Rigidbody body;
 
@@ -88,6 +89,7 @@ namespace Player
             eating=false;
             TriggerPressed = false;
             spawnPoint = transform.position;
+            gameManager = FindObjectOfType<GameManager> ();
             new IdleState(this);
         }
 
@@ -133,9 +135,9 @@ namespace Player
             }
             if (invicibilityCounter <= 0 && !eating)
             {
-                Debug.Log("Bla");
                 invicibilityCounter = 1;
                 MusicSource.PlayOneShot(hurtSound, 1F);
+                gameManager.AddDamage (gameObject);
                 body.velocity = Vector3.zero;
                 body.AddForce(_hitDirection * 3f, ForceMode.VelocityChange);
                 transform.forward = _hitDirection;

@@ -113,18 +113,18 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 1
-        neutralBlackIn: 0.02
-        neutralWhiteIn: 10
+        neutralBlackIn: 0.08
+        neutralWhiteIn: 1
         neutralBlackOut: 0
         neutralWhiteOut: 10
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 2.12
+        postExposure: 1
         temperature: 0
         tint: 0
-        hueShift: 0
-        saturation: 1
+        hueShift: -6
+        saturation: 0
         contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
@@ -322,9 +322,9 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0
-      smoothness: 0.2
-      roundness: 1
+      intensity: 0.65
+      smoothness: 0.6
+      roundness: 0.8
       mask: {fileID: 0}
       opacity: 1
       rounded: 0

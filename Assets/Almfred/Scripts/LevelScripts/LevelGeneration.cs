@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
+using UnityEngine.PostProcessing;
 
 public class LevelGeneration : NetworkBehaviour {
 
@@ -25,11 +26,13 @@ public class LevelGeneration : NetworkBehaviour {
 	public GameObject[] doorObject;
 	public GameObject[] roomWhiteObj;
 	public Transform mapRoot;
+    public NetworkManagerHUD NetworkHUD;
+    public PostProcessingProfile Profile;
 	private Transform camera;
 	private Room[,] rooms;
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 
 	public override void OnStartServer()
@@ -39,6 +42,9 @@ public class LevelGeneration : NetworkBehaviour {
 		SetRoomTypes();
 		CmdDrawMap();
 		CmdInstantiateRooms();
+        NetworkHUD.showGUI = false;
+        Profile.vignette.enabled = false;
+        Profile.colorGrading.enabled = false;
 	}
 	
 void CreateRooms(){
