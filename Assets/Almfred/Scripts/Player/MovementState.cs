@@ -12,7 +12,7 @@ namespace Player
         private float powerCounter;
         private RaycastHit hitFront, hitLeft, hitRight;
         private GameManager gameManager;
-        private GameObject proyectile;
+        private GameObject proyectilePrefab;
 
         public MovementState(PlayerBehaviour player): base(player)
         {
@@ -42,13 +42,13 @@ namespace Player
                 }
                 else if (Player.playerState == 0) //poder de fuego
                 {
-                    proyectile = Player.fireBallPrefab;
+                    proyectilePrefab = Player.fireBallPrefab;
                     Player.Anim.SetTrigger("Shoot");
                     Player.StartOtherCoroutine(WaitAndShoot());
                 }
                 else if (Player.playerState == 1) //poder de fuego
                 {
-                    proyectile = Player.iceSpikePrefab;
+                    proyectilePrefab = Player.iceSpikePrefab;
                     Player.Anim.SetTrigger("Shoot");
                     Player.StartOtherCoroutine(WaitAndShoot());
                 }
@@ -154,12 +154,12 @@ namespace Player
         public void CmdShootAction()
         {
             Player.MusicSource.PlayOneShot(Player.shootSound, 1F);
-            GameObject fireBall = MonoBehaviour.Instantiate(
-                Player.fireBallPrefab,
+            GameObject proyectile = MonoBehaviour.Instantiate(
+                proyectilePrefab,
                 Player.transform.position + Player.transform.forward * 0.6f,
                 Player.transform.rotation);
 
-            NetworkServer.Spawn(fireBall);
+            NetworkServer.Spawn(proyectile);
 
             Player.ActionHandler -= CmdShootAction;
         }
