@@ -60,7 +60,7 @@ namespace Player
         public Renderer playerRender;
         public bool eating;
         public bool isLocal;
-
+        public Vector3 spawnPoint;
         
         /* 
         void Start ()
@@ -87,7 +87,14 @@ namespace Player
             playerState = -1; //no tiene poderes
             eating=false;
             TriggerPressed = false;
+            spawnPoint = transform.position;
             new IdleState(this);
+        }
+
+        public void Spawn()
+        {
+            playerCamera.transform.position = Vector3.zero;
+            transform.position = spawnPoint;
         }
 
         void Update ()
@@ -124,13 +131,13 @@ namespace Player
             {
                 return;
             }
-            if (invicibilityCounter <= 0 && !eating)
+            if (invicibilityCounter < 0 && !eating)
             {
+                invicibilityCounter = 1;
                 MusicSource.PlayOneShot(hurtSound, 1F);
                 body.velocity = Vector3.zero;
                 body.AddForce(_hitDirection * 3f, ForceMode.VelocityChange);
                 transform.forward = _hitDirection;
-                invicibilityCounter = 1;
                 playerRender.enabled = false;
                 flashCounter = 0.1f;
                 PhysicsHandler += HurtAction;

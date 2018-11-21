@@ -55,7 +55,7 @@ namespace Enemies
                 Vector3 hitDirection = collision.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
                 collision.gameObject.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
-                gameManager.AddDamage ();
+                gameManager.AddDamage (collision.gameObject);
             }
         }
 

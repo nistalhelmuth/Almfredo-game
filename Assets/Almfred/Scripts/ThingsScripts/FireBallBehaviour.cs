@@ -24,7 +24,7 @@ public class FireBallBehaviour : NetworkBehaviour
     [Command]
     void CmdOnDestroy(Vector3 position)
     {
-        GameObject deadSoul = Instantiate(DeadSoul, position, Quaternion.Euler(0f, 180f, 0f));
+        GameObject deadSoul = Instantiate(DeadSoul, position, Quaternion.identity);
         NetworkServer.Spawn(deadSoul);
     }
     void OnTriggerEnter(Collider collider)
@@ -43,7 +43,7 @@ public class FireBallBehaviour : NetworkBehaviour
                 Vector3 hitDirection = collider.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
                 obj.GetComponent<PlayerBehaviour>().takeDmg(hitDirection);
-                gameManager.AddDamage ();
+                gameManager.AddDamage (obj);
             }
 
             break;

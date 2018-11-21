@@ -89,7 +89,7 @@ namespace Player
                 Player.ActionHandler += powerTimer;
                 Player.powerCanvas.SetActive(true);
                 powerCounter = powerLength;
-                Player.playerState = 0;
+                Player.playerState = 1;
             }
             else if (hit.transform.gameObject.name == "DeadSoul(Clone)")
             {
