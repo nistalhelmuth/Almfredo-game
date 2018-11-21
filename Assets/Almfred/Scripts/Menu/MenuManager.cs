@@ -39,7 +39,8 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         MenuCanvas.SetActive(false);
-        SceneManager.LoadScene("AssetTest");
+        //SceneManager.LoadScene("AssetTest");
+        SceneManager.LoadScene("Lobby");
     }
 
     public void QuitGame()
